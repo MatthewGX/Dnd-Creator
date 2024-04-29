@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    
-    <nav>
-        <!-- <div id="logo">
-            <img src="icon.png">
-        </div> -->
-        <ul id="nav_tab_group">
-            <li class="nav_tab">
-                <a href="profile-page/profile.html">Profile</a>
-            </li>
-            <li class="nav_tab">
-                <a href="group-page/group-main.html">Groups</a>
-            </li>
-            <li class="nav_tab">
-                <a href="character-sheet-page/character-sheet-main.html">Sheets</a>
-            </li>
-            <li class="nav_tab">
-                <a href="">Wiki</a>
-            </li>
-
-            <li class="nav_home" id="logo">
-                <a href=""><img src="icon.png"></a>
-            </li>
-        </ul>
-    </nav>
-</head>
-<body>
-</body>
-
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page</title>
+        
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="index.css">
+        
+        <nav>
+            <ul id="nav_tab_group">
+                <li class="nav_home" id="logo">
+                    <a href=""><img src="icon.png"></a>
+                </li>
+            </ul>
+        </nav>
+    </head>
+    <body>
+        <div id="login">
+            <span id="container">
+                <div class="box" id="guest">
+                    <a href=""><h1>Continue as Guest</h1></a>
+                </div>
+                <div class="box" id="sign">
+                    <a href="profile-page/profile.html"><h1>Login</h1></a>
+                </div>
+            </span>
+        </div>
+    </body>
 </html>
