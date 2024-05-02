@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../main.css">
-    <link rel="stylesheet" href="register-page.css">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="../../../main.css">
+    <link rel="stylesheet" href="./register-page.css">
     
     <nav>
         <ul id="nav_tab_group">
             <li class="nav_home" id="logo">
-                <a href="../"><img src="../icon.png"></a>
+                <a href="../"><img src="../../../icon.png"></a>
             </li>
         </ul>
     </nav>
@@ -34,7 +36,7 @@
 </head>
 <body>
     <div id="register">
-        <form id="registerForm" onsubmit="handleSubmit(event)">
+        <form id="registerForm" action="../login-page/login-page.html" onsubmit="handleSubmit(event)">
             <div class="input-box">
                 <input type="text" id="username" name="username" required>
                 <label for="username">Username</label>
