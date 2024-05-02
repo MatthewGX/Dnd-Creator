@@ -1,0 +1,50 @@
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    max-width: fit-content;
+    margin-inline: auto;
+
+    margin-top: 10%;
+    margin-bottom: auto;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-box input {
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.input-box label {
+    margin-bottom: 5px;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-group button {
+    width: 100px;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+}
