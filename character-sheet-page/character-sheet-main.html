@@ -1,32 +1,323 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../main.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+
+    <nav>
+        <ul id="nav_tab_group">
+            <li class="nav_tab">
+                <a href="../profile-page/profile.html">Profile</a>
+            </li>
+            <li class="nav_tab">
+                <a href="../group-page/group-main.html">Groups</a>
+            </li>
+            <li class="nav_tab">
+                <a href="../character-sheet-page/character-sheet-main.html" id="active">Sheets</a>
+            </li>
+            <li class="nav_tab">
+                <a href="">Wiki</a>
+            </li>
+
+            <li class="nav_home" id="logo">
+                <a href="../"><img src="../icon.png"></a>
+            </li>
+        </ul>
+    </nav>
+
+    <style>
+        .container {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+
+            .column {
+                float: left;
+                margin-right: 4%;
+            }
+
+            .column:nth-child(3n) {
+                margin-right: 0;
+            }
+
+            .column p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .statCol { width: 12%; background-color: #7c67f5; display: flex; flex-direction: column;}
+            .col2 { width: 88%; background-color: #ec5058;}
+
+            .stat {
+              width: 200px;
+              height: 100px;
+              background-color: #777777;
+              margin-top: 5px; /*A little bit of padding*/
+              margin-bottom: 5px; /*A little bit of padding*/
+              margin-left: 5px; /*A little bit of padding*/
+              margin-right: 5px; /*A little bit of padding*/
+              display: flex;
+              align-items: center;
+            }
+            .rectangle {
+              width: 100px;
+              height: 50px;
+              background-color: #ccc;
         
-        <nav>
-            <ul id="nav_tab_group">
-                <li class="nav_tab">
-                    <a href="../profile-page/profile.html">Profile</a>
-                </li>
-                <li class="nav_tab">
-                    <a href="../group-page/group-main.html">Groups</a>
-                </li>
-                <li class="nav_tab">
-                    <a href="../character-sheet-page/character-sheet-main.html" id="active">Sheets</a>
-                </li>
-                <li class="nav_tab">
-                    <a href="">Wiki</a>
-                </li>
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .circle {
+              width: 63px;
+              height: 40px;
+              
+              background-color: #ccc;
+        
+              margin-right: 10px; /*Gives a little spacing to the right*/
+        
+              border-radius: 100%;
+        
+              
+              justify-content: center;
+              align-items: center;
+            }
+            .circle span {
+              font-size: 10px;
+            }
+            .userInput {
+              width: 80%;
+              height: 80%;
+              font-size: 20px;
+              text-align: center;
+              border: none;
+              background-color: transparent;
+            }
 
-                <li class="nav_home" id="logo">
-                    <a href="../"><img src="../icon.png"></a>
-                </li>
-            </ul>
-        </nav>
-    </head>
-    <body>
+            .containerTop {
+              flex:1;
+              display: flex;
+              flex-direction: column;
+              height: 80vh;
+              }
 
-    </body>
+          .containerSide {
+            flex:1;
+            display: flex;
+            flex-direction: row;
+            }
+
+          .infoSection {
+            height: 15vh;
+            display: flex;
+            flex-direction: row;
+            margin-top: 5px; /*A little bit of padding*/
+            margin-bottom: 5px; /*A little bit of padding*/
+            margin-left: 5px; /*A little bit of padding*/
+            margin-right: 5px; /*A little bit of padding*/
+            background-color: lightblue;
+            justify-content: center;
+            align-items: center;
+          }
+          .infoLeft,
+          .infoRight {
+            margin-top: 5px; /*A little bit of padding*/
+            margin-bottom: 5px; /*A little bit of padding*/
+            margin-left: 5px; /*A little bit of padding*/
+            margin-right: 5px; /*A little bit of padding*/
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+          }
+
+          .infoLeft {
+            background-color: lightgreen;
+            width: 30%;
+            
+          }
+
+          .infoRight {
+            flex: 1;
+            background-color: rgb(53, 151, 53);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Create 3 columns with equal width */
+            gap: 10px; /* Add gap between items */
+
+          }
+
+          .textbox-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .textbox-container span {
+            margin-bottom: 5px; /* Adjust spacing between number and textbox */
+          }
+
+          .textbox {
+            margin-top: 5px; /*A little bit of padding*/
+            margin-bottom: 5px; /*A little bit of padding*/
+            margin-left: 5px; /*A little bit of padding*/
+            margin-right: 5px; /*A little bit of padding*/
+            background-color: #ccc;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+
+
+
+          .left-block,
+          .right-block {
+            margin-top: 5px; /*A little bit of padding*/
+            margin-bottom: 5px; /*A little bit of padding*/
+            margin-left: 5px; /*A little bit of padding*/
+            margin-right: 5px; /*A little bit of padding*/
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+          }
+
+          .left-block {
+            background-color: rgb(53, 151, 53);
+            
+          }
+
+          .right-block {
+            background-color: lightgreen;
+          }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="statCol">
+
+            <div class="stat">
+                <div class="circle">
+                  <input id="str-input" class="userInput" type="number" min="0" max="30" value="10" oninput="updateStr(this.value)">
+                  <span>Strength</span>
+                </div>
+                <div id="str-mod" class="rectangle">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="circle">
+                    <input id="dex-input" class="userInput" type="number" min="0" max="30" value="10" oninput="updateDex(this.value)">
+                    <span>Dexterity </span>
+                  </div>
+                
+                <div id="dex-mod" class="rectangle">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="circle">
+                    <input id="con-input" class="userInput" type="number" min="0" max="30" value="10" oninput="updateCon(this.value)">
+                    <span>Constitution </span>
+                </div>
+                <div id="con-mod" class="rectangle">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="circle">
+                    <input id="int-input" class="userInput" type="number" min="0" max="30" value="10" oninput="updateInt(this.value)">
+                    <span>Intelligience </span>
+                </div>
+                <div id="int-mod" class="rectangle">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="circle">
+                    <input id="wis-input" class="userInput" type="number" min="0" max="30" value="10" oninput="updateWis(this.value)">
+                    <span>Wisdom </span>
+                </div>
+                <div id="wis-mod" class="rectangle">0</div>
+            </div>
+
+            <div class="stat">
+                <div class="circle">
+                    <input id="cha-input" class="userInput" type="number" min="0" max="30" value="10" oninput="updateCha(this.value)">
+                    <span>Charisma </span>
+                </div>
+                <div id="cha-mod" class="rectangle">0</div>
+            </div>
+
+        </div>
+
+        <div class="col2">
+            <div class="containerTop">
+                <div class="infoSection">
+                  <div class="infoLeft">Top Left Block</div>
+                  <div class="infoRight">
+                    <div class="textbox-container">
+                      <span>Class</span>
+                      <div class="textbox"><input class = "userInput" type="text"></div>
+                    </div>
+                    <div class="textbox-container">
+                      <span>Background</span>
+                      <div class="textbox"><input class = "userInput" type="text"></div>
+                    </div>
+                    <div class="textbox-container">
+                      <span>Exp</span>
+                      <div class="textbox"><input class = "userInput" type="text"></div>
+                    </div>
+                    <div class="textbox-container">
+                      <span>Race</span>
+                      <div class="textbox"><input class = "userInput" type="text"></div>
+                    </div>
+                    <div class="textbox-container">
+                      <span>Alignment</span>
+                      <div class="textbox"><input class = "userInput" type="text"></div>
+                    </div>
+                    <div class="textbox-container">
+                      <span>Name</span>
+                      <div class="textbox"><input class = "userInput" type="text"></div>
+                    </div>
+                    
+
+                  </div>
+                </div>
+                <div class="containerSide">
+                    <div class="left-block">Bot Left Block</div>
+                    <div class="right-block">BotRight Block</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateStr(value) {
+            document.getElementById('str-mod').innerText = Math.floor((value-10) / 2);
+          }
+          function updateDex(value) {
+            document.getElementById('dex-mod').innerText = Math.floor((value-10) / 2);
+          }
+          function updateCon(value) {
+            document.getElementById('con-mod').innerText = Math.floor((value-10) / 2);
+          }
+          function updateInt(value) {
+            document.getElementById('int-mod').innerText = Math.floor((value-10) / 2);
+          }
+          function updateWis(value) {
+            document.getElementById('wis-mod').innerText = Math.floor((value-10) / 2);
+          }
+          function updateCha(value) {
+            document.getElementById('cha-mod').innerText = Math.floor((value-10) / 2);
+          }
+    </script>
+
+</body>
+
 </html>
