@@ -9,14 +9,14 @@ let group_board = document.getElementById('group-container')
 // }
 
 const addGroup = () => {
-    group_board.insertAdjacentHTML('beforeend', `<li id=${i} class="group-object"><h1>temp ${i}</h1></li>`)
+    group_board.insertAdjacentHTML('beforeend', `<li id=${i} class="group-object"><a href='../group-manage-page/group-manage.html'><h1>temp ${i}</h1></a></li>`)
     // groups.push('temp ' + i);
 
-    let button = document.getElementById(i);
-    button.addEventListener('click', function(){
-        button.remove();
-        i--;
-    });
+    // let button = document.getElementById(i);
+    // button.addEventListener('click', function(){
+    //     button.remove();
+    //     i--;
+    // });
     i++;
 
 }
