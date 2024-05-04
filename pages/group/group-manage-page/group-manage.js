@@ -1,6 +1,6 @@
 let selectedTab = null;
 
-let tabs = ['players', 'sheets', 'privacy'];
+let tabs = ['players', 'sheets', 'roles'];
 
 const selectActive = (tabID) => {
     // console.log(tabID);
