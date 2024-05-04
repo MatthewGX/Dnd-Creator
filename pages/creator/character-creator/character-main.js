@@ -9,5 +9,5 @@ const addCharacter = () => {
 
 }
 
-document.getElementById("add-character-button").addEventListener('click', addCharacter);
+// document.getElementById("add-character-button").addEventListener('click', addCharacter);
 
