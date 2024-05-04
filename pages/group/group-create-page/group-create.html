@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../main.css">
+        <link rel="stylesheet" href="./group-create.css">
+        <title>Create Group</title>
+
+        <nav>
+            <ul id="nav_tab_group">
+                <li class="nav_tab">
+                    <a href="" id="active">Profile</a>
+                </li>
+                <li class="nav_tab">
+                    <a href="../../group/group-main-page/group-main.html">Groups</a>
+                </li>
+                <li class="nav_tab">
+                    <a href="../../creator/character-main-page/character-main.html">Sheets</a>
+                </li>
+                <li class="nav_tab">
+                    <a href="../../wiki/wiki-glossary/wiki-glossary.html">Wiki</a>
+                </li>
+
+                <li class="nav_home" id="logo">
+                    <a href="../../../index.html"><img src="../../../icon.png"></a>
+                </li>
+            </ul>
+        </nav>
+    </head>
+
+
+    <body>
+        <main>
+            <form id="create-group-form">
+                <label for="group-name">Group Name:</label>
+                <input type="text" id="group-name" name="group-name" placeholder="Placeholder">
+
+                <label for="players">Players:</label>
+                <input type="text" id="players" name="players" placeholder="JohnDoe142, EpicUser11">
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Group Description"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+        <body>
+            <script>
+
+                document.getElementById('create-group-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const groupName = document.getElementById('group-name').value;
+                    const players = document.getElementById('players').value;
+                    const description = document.getElementById('description').value;
+
+                    let groups = JSON.parse(localStorage.getItem('groups')) || [];
+                    let newGroup = { groupName, players, description };
+                    groups.push(newGroup);
+
+                    localStorage.setItem('groups', JSON.stringify(groups));
+                    
+                    window.location.href = '../../group/group-main-page/group-main.html';
+                });
+
+                
+            </script>
+        </body>
+    </body>
+</html>
