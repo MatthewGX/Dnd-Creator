@@ -21,7 +21,7 @@ const addGroup = () => {
 
 }
 
-document.getElementById("add-group-button").addEventListener('click', addGroup);
+// document.getElementById("add-group-button").addEventListener('click', addGroup);
 
 // const removeGroup = (id) => {
 //     document.getElementById(id).remove();
