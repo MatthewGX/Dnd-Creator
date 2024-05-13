@@ -1,0 +1,53 @@
+#Nav {
+    display: inline;
+    /* width: 100%; */
+}
+
+#Nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #222222;
+    /* float: right; */
+}
+
+#Nav .nav_tab {
+    /* display: inline; */
+    float: right;
+
+    border-left: 1px solid #bbb;
+}
+
+#Nav .nav_tab a {
+    height: 65px;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#Nav #active {
+    background-color: #4c1111;
+}
+
+#Nav .nav_tab a:hover {
+    background-color: rgb(165, 54, 54);
+}
+
+#Nav #logo {
+    float: left;
+    border-left: 0px;
+    display: flex;
+    align-items: center;
+    /* border-right: 1px solid white; */
+}
+
+#Nav #logo img {
+    object-fit: cover;
+    max-height: 50px;
+
+    margin: 5px;
+}
