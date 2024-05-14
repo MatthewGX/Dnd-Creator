@@ -11,16 +11,16 @@ function NavBar(props) {
       <nav id="Nav">
         <ul id="nav_tab_group">
           <li class="nav_tab">
-            <Link to="/profile">Profile</Link>
+            <Link to="/user">Profile</Link>
           </li>
           <li class="nav_tab">
-            <Link to="/groups">Groups</Link>
+            <Link to="/user/groups">Groups</Link>
           </li>
           <li class="nav_tab">
-            <Link to="/sheets">Sheets</Link>
+            <Link to="/user/sheets">Sheets</Link>
           </li>
           <li class="nav_tab">
-            <Link to="/wiki">Wiki</Link>
+            <Link to="/user/wiki">Wiki</Link>
           </li>
 
           <li class="nav_home" id="logo">

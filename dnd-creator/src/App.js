@@ -16,6 +16,7 @@ import GroupAddPage from './pages/User/Groups/GroupAddPage/GroupAddPage';
 import SheetsMainPage from './pages/User/Sheets/SheetsMainPage/SheetsMainPage';
 import SheetCreatorPage from './pages/User/Sheets/CreatorPage/SheetCreatorPage';
 import WikiPage from './pages/User/Wiki/WikiPage';
+import ResetPasswordPage from './pages/default/login/ResetPasswordPage/ResetPasswordPage';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
           {/* Default Pathways (Not Logged In) */}
           <Route path="/" element={<Layout />}>
             <Route index element={<LandingPage />} />
-            <Route path="login" element={<LoginPage />} />
+            <Route path="login" element={<LoginPage />}/>
+              <Route path="login/reset" element={<ResetPasswordPage />} />
 
             {/* Guest Pages */}
             <Route path="creator" element={<SheetCreatorPage />} />
