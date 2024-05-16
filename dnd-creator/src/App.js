@@ -42,7 +42,7 @@ function App() {
             <Route path="groups/" element={<GroupsLayout />}>
               <Route index element={<GroupsMainPage />} />
               <Route path='group/:id/' element={<GroupManagePage />} />
-              <Route path='group/add' element={<GroupAddPlayerPage />} />
+              <Route path='group/:id/add' element={<GroupAddPlayerPage />} />
               <Route path='add' element={<GroupAddPage />} />
             </Route>
 

@@ -1,0 +1,149 @@
+.group-manage-page .outer-container {
+    display: flex;
+    box-sizing: border-box;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    margin-inline: auto;
+    margin-top: 2.5%;
+    margin-bottom: auto;
+
+    background-color: black;
+    width: 95%;
+    /* max-width: 1000px; */
+}
+
+.group-manage-page .inner-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    min-height: 500px;
+
+    margin: 10px;
+    /* padding: 10px; */
+}
+
+.group-manage-page .col ul {
+    list-style: none;
+    background-color: rgb(87, 87, 87);
+
+    height: 100%;
+    border-right: 2px solid black;
+}
+
+.group-manage-page .col li {
+    background-color: grey;
+    /* border-bottom: 1px solid black; */
+
+    font-size: 20px;
+    font-weight: bold;
+    text-align: start;
+    /* padding: 10px 5px; */
+}
+
+.group-manage-page .screenTab button{
+    background-color: transparent;
+    /* border-bottom: 1px; */
+    width: 100%;
+    height: 100%;
+
+    font-size: 20px;
+    
+    padding: 10px 5px;
+    /* margin: 0px; */
+}
+
+.group-manage-page #info-screen {
+    background-color: grey;
+}
+
+.group-manage-page .col ul .active {
+    background-color: darkgray;
+}
+
+.group-manage-page .screen {
+    display:none;
+}
+
+.group-manage-page .screen.active {
+    display:block;
+}
+
+.group-manage-page .inner-screen {
+    display: block;
+    background-color: white;
+    /* width: 100%; */
+    height: 470px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.group-manage-page .outer-group {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    margin-inline: auto;
+    margin-top: 25px;
+    margin-bottom: auto;
+
+    background-color: black;
+    width: 95%;
+    max-width: 1000px;
+    height: fit-content;
+
+}
+
+.group-manage-page .inner-group {
+    /* display: inline; */
+
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+
+    margin: 10px;
+    padding: 10px;
+
+}
+
+.group-manage-page .group-object {
+    display: inline-block;
+    vertical-align: middle;
+
+    background-color: gray;
+    width: 100px;
+    height: 100px;
+    
+    margin: 10px;
+    padding: 10px;
+
+    /* border-radius: 0px 25px 0px 0px; */
+}
+.group-manage-page .group-object a {
+    text-decoration: none;
+    color: black;
+}
+
+.group-manage-page #add-player {
+    /* margin: 0; */
+    display: inline-flex;
+    padding: 0;
+    width: 170px;
+    height: 170px;
+    background-color: transparent;
+
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.group-manage-page #add-player button {
+    width: 75%;
+    height: 75%;
+    background-color: rgb(55, 143, 55);
+    border: none;
+    border-radius: 360px;
+}
