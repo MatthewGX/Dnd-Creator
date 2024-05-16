@@ -29,12 +29,16 @@
     text-decoration: none;
 }
 
-#Nav #active {
+/* #Nav #active {
     background-color: #4c1111;
-}
+} */
 
 #Nav .nav_tab a:hover {
     background-color: rgb(165, 54, 54);
+}
+
+#Nav .nav_tab a.active {
+    background-color: #4c1111;
 }
 
 #Nav #logo {

@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from "./Icon.png";
 
 // StyleSheets
 import './navbar.css';
-import { LoginPage } from "../../pages/default/login/login-page";
 
 function NavBar(props) {
   if (props.isLoggedIn === 'true') {
@@ -11,16 +10,16 @@ function NavBar(props) {
       <nav id="Nav">
         <ul id="nav_tab_group">
           <li class="nav_tab">
-            <Link to="/user">Profile</Link>
+            <NavLink end to="/user">Profile</NavLink>
           </li>
           <li class="nav_tab">
-            <Link to="/user/groups">Groups</Link>
+            <NavLink to="/user/groups">Groups</NavLink>
           </li>
           <li class="nav_tab">
-            <Link to="/user/sheets">Sheets</Link>
+            <NavLink to="/user/sheets">Sheets</NavLink>
           </li>
           <li class="nav_tab">
-            <Link to="/user/wiki">Wiki</Link>
+            <NavLink to="/user/wiki">Wiki</NavLink>
           </li>
 
           <li class="nav_home" id="logo">

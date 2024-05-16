@@ -1,6 +1,4 @@
-import { NavBar } from './components/navbar/navbar';
-import { BrowserRouter as Router, Route, Switch, Link, Outlet, BrowserRouter, Routes } from 'react-router-dom';
-import logo from "./Icon.png";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // StyleSheets
 import './App.css';
@@ -17,47 +15,47 @@ import SheetsMainPage from './pages/User/Sheets/SheetsMainPage/SheetsMainPage';
 import SheetCreatorPage from './pages/User/Sheets/CreatorPage/SheetCreatorPage';
 import WikiPage from './pages/User/Wiki/WikiPage';
 import ResetPasswordPage from './pages/default/login/ResetPasswordPage/ResetPasswordPage';
+import GroupsLayout from './pages/User/Groups/GroupsLayout';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Routes>
           {/* Default Pathways (Not Logged In) */}
           <Route path="/" element={<Layout />}>
             <Route index element={<LandingPage />} />
-            <Route path="login" element={<LoginPage />}/>
-              <Route path="login/reset" element={<ResetPasswordPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="login/reset" element={<ResetPasswordPage />} />
 
             {/* Guest Pages */}
             <Route path="creator" element={<SheetCreatorPage />} />
             <Route path="wiki" element={<WikiPage />} />
           </Route>
-          
+
           {/* User Pathways (Logged In) */}
           <Route path="/user/" element={<UserLayout />}>
             {/* Profile */}
             <Route index element={<ProfilePage />} />
-            
+
             {/* Groups */}
-            <Route path="groups/" element={<GroupsMainPage />}>
-              <Route path='group/:id/' element={<GroupManagePage />}>
-                <Route path='add' element={<GroupAddPlayerPage />} />
-              </Route>
+            <Route path="groups/" element={<GroupsLayout />}>
+              <Route index element={<GroupsMainPage />} />
+              <Route path='group/:id/' element={<GroupManagePage />} />
+              <Route path='group/add' element={<GroupAddPlayerPage />} />
               <Route path='add' element={<GroupAddPage />} />
             </Route>
 
             {/* Sheets */}
-            <Route path="sheets/" element={<SheetsMainPage />}>
-              <Route path="creator" element={<SheetCreatorPage />} />
-            </Route>
+            <Route path="sheets/" element={<SheetsMainPage />} />
+            <Route path="sheets/creator" element={<SheetCreatorPage />} />
 
             {/* Wiki */}
             <Route path="wiki/" element={<WikiPage />} />
           </Route>
 
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }
