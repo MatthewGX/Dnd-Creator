@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './GroupManagePage.css';
 
 const GroupManagePage = () => {
   const [activeTab, setActiveTab] = useState('players');
+  const { id } = useParams();
   const tabs = ['players', 'sheets', 'roles'];
 
   const selectActive = (tabID) => {
@@ -39,7 +40,7 @@ const GroupManagePage = () => {
                           <li id='1' className="group-object"><h2>Player 1</h2></li>
                         </span>
                         <li id="add-player" className="group-object">
-                          <Link to="/user/groups/add"><button id="add-player-button"><h1>Add New Player</h1></button></Link>
+                          <Link to={`/user/groups/group/${id}/add`}><button id="add-player-button"><h1>Add New Player</h1></button></Link>
                         </li>
                       </ul>
                     </div>

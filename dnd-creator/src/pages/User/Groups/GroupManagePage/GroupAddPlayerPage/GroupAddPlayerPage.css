@@ -1,4 +1,4 @@
-.group-add-page {
+.group-add-player-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,14 +49,15 @@
     width: 100%;
   }
   
-  form {
+  .search-container {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Add a fixed width to ensure the form container is wide enough */
+    width: 300px; 
   }
   
   label {
@@ -64,25 +65,29 @@
     font-weight: bold;
   }
   
-  input, textarea {
+  input {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%; /* Ensure the input and textarea take up the full width of the container */
+    width: 100%; 
   }
   
-  button {
+  .results-container {
+    width: 100%;
+  }
+  
+  .results-container p {
+    font-weight: bold;
+  }
+  
+  #search-results {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #search-results li {
     padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
+    border-bottom: 1px solid #ccc;
   }
   
