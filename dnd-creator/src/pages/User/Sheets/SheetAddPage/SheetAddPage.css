@@ -1,0 +1,88 @@
+.sheet-add-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav {
+    width: 100%;
+    background-color: #333;
+  }
+  
+  #nav_tab_sheet {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .nav_tab {
+    float: left;
+  }
+  
+  .nav_tab a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav_tab a:hover {
+    background-color: #111;
+  }
+  
+  .nav_home {
+    float: right;
+  }
+  
+  .nav_home img {
+    height: 40px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Add a fixed width to ensure the form container is wide enough */
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input, textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Ensure the input and textarea take up the full width of the container */
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

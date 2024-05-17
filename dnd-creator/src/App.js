@@ -7,16 +7,26 @@ import LandingPage from './pages/default/landing-page/landing-page';
 import Layout from './pages/default/Layout';
 import UserLayout from './pages/User/UserLayout';
 import ProfilePage from './pages/User/ProfilePage/ProfilePage';
+
 import GroupsMainPage from './pages/User/Groups/GroupsMainPage/GroupsMainPage';
 import GroupManagePage from './pages/User/Groups/GroupManagePage/GroupManagePage';
 import GroupAddPlayerPage from './pages/User/Groups/GroupManagePage/GroupAddPlayerPage/GroupAddPlayerPage';
 import GroupAddPage from './pages/User/Groups/GroupAddPage/GroupAddPage';
+
 import SheetsMainPage from './pages/User/Sheets/SheetsMainPage/SheetsMainPage';
-import SheetCreatorPage from './pages/User/Sheets/CreatorPage/SheetCreatorPage';
+import SheetManagePage from './pages/User/Sheets/SheetsManagePage/SheetManagePage';
+import SheetAddPlayerPage from './pages/User/Sheets/SheetsManagePage/SheetAddPlayerPage/SheetAddPlayerPage';
+import SheetAddPage from './pages/User/Sheets/SheetAddPage/SheetAddPage';
+
 import WikiPage from './pages/User/Wiki/WikiPage';
 import ResetPasswordPage from './pages/default/login/ResetPasswordPage/ResetPasswordPage';
+
+
 import GroupsLayout from './pages/User/Groups/GroupsLayout';
 import { GroupProvider } from './pages/User/Groups/GroupContext/GroupContext';
+
+import SheetsLayout from './pages/User/Sheets/SheetsLayout';
+import { SheetProvider } from './pages/User/Sheets/SheetContext/SheetContext';
 
 function App() {
   return (
@@ -29,7 +39,7 @@ function App() {
           <Route path="login/reset" element={<ResetPasswordPage />} />
 
           {/* Guest Pages */}
-          <Route path="creator" element={<SheetCreatorPage />} />
+          <Route path="creator" element={<SheetsMainPage />} />
           <Route path="wiki" element={<WikiPage />} />
         </Route>
 
@@ -45,10 +55,15 @@ function App() {
             <Route path="group/:id/add" element={<GroupAddPlayerPage />} />
             <Route path="add" element={<GroupAddPage />} />
           </Route>
+          
+          {/* Groups */}
+          <Route path="sheets/" element={<SheetProvider><SheetsLayout /></SheetProvider>}>
+            <Route index element={<SheetsMainPage />} />
+            <Route path="group/:id/" element={<SheetManagePage />} />
+            <Route path="group/:id/add" element={<SheetAddPlayerPage />} />
+            <Route path="add" element={<SheetAddPage />} />
+          </Route>
 
-          {/* Sheets */}
-          <Route path="sheets/" element={<SheetsMainPage />} />
-          <Route path="sheets/creator" element={<SheetCreatorPage />} />
 
           {/* Wiki */}
           <Route path="wiki/" element={<WikiPage />} />
