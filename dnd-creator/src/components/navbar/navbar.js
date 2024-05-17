@@ -34,10 +34,10 @@ function NavBar(props) {
       <div id="Nav">
         <ul id="nav_tab_group">
           <li class="nav_tab">
-            <Link to="/wiki">Wiki</Link>
+            <NavLink to="/wiki">Wiki</NavLink>
           </li>
           <li class="nav_tab">
-            <Link to="/creator">Creator</Link>
+            <NavLink to="/creator">Creator</NavLink>
           </li>
           <li class="nav_home" id="logo">
             <Link to="/"><img src={logo} alt="" /></Link>

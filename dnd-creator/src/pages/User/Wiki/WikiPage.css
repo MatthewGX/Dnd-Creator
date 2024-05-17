@@ -1,0 +1,42 @@
+#wiki .outer-container {
+    display: flex;
+    box-sizing: border-box;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    margin-inline: auto;
+    margin-top: 2.5%;
+    margin-bottom: auto;
+
+    background-color: black;
+    width: 95%;
+    /* max-width: 1000px; */
+}
+
+#wiki .screen {
+    display:none;
+}
+
+#wiki .screen.active {
+    display:block;
+}
+
+#wiki .inner-screen {
+    background-color: white;
+    padding: 5px;
+    margin: 10px;
+
+    height: 400px;
+
+}
+
+#wiki .inner-screen>ol {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    background-color: white;
+    font-size: 20px;
+    /* padding-left: 20px; */
+    list-style-position: inside;;
+
+}
