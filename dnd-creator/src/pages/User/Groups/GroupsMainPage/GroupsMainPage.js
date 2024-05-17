@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGroups } from '../GroupContext/GroupContext';
 import './GroupsMainPage.css';
+import GenericGroupContainer from '../../../../components/group-container/group-container';
 
 const GroupsMainPage = () => {
   const { groups } = useGroups();
@@ -9,7 +10,7 @@ const GroupsMainPage = () => {
   return (
     <>
       <div className="outer-container">
-        <ul className="inner-container">
+        {/* <ul className="inner-container">
           {groups.map((group, index) => (
             <span key={index} id="group-container">
               <li id={index} className="group-object">
@@ -24,7 +25,9 @@ const GroupsMainPage = () => {
               <button id="add-group-button"><h1>Add New Group</h1></button>
             </Link>
           </li>
-        </ul>
+        </ul> */}
+
+        <GenericGroupContainer group={groups} linkUrl='group' addLink='add' />
       </div>
     </>
   );
