@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './GroupManagePage.css';
+import GenericGroupContainer from '../../../../components/group-container/group-container';
 
 const GroupManagePage = () => {
   const [activeTab, setActiveTab] = useState('players');

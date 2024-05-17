@@ -24,6 +24,12 @@ import ResetPasswordPage from './pages/default/login/ResetPasswordPage/ResetPass
 
 import GroupsLayout from './pages/User/Groups/GroupsLayout';
 import { GroupProvider } from './pages/User/Groups/GroupContext/GroupContext';
+import WikiGlossary from './pages/User/Wiki/WikiPage';
+import AlignmentsWikiPage from './pages/User/Wiki/wiki-pages/AlignmentsWikiPage';
+import BackgroundsWikiPage from './pages/User/Wiki/wiki-pages/BackgroundsWikiPage';
+import AttributesWikiPage from './pages/User/Wiki/wiki-pages/AttributesWikiPage';
+import RacesWikiPage from './pages/User/Wiki/wiki-pages/RacesWikiPage';
+import ClassesWikiPage from './pages/User/Wiki/wiki-pages/ClassesWikiPage';
 
 import SheetsLayout from './pages/User/Sheets/SheetsLayout';
 import { SheetProvider } from './pages/User/Sheets/SheetContext/SheetContext';
@@ -66,7 +72,13 @@ function App() {
 
 
           {/* Wiki */}
-          <Route path="wiki/" element={<WikiPage />} />
+          <Route path="wiki/" element={<WikiGlossary />}>
+            <Route path="classes" element={<ClassesWikiPage />} />
+            <Route path="races" element={<RacesWikiPage />} />
+            <Route path="attributes" element={<AttributesWikiPage />} />
+            <Route path="backgrounds" element={<BackgroundsWikiPage />} />
+            <Route path="alignments" element={<AlignmentsWikiPage />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

@@ -32,9 +32,13 @@ const GroupAddPlayerPage = () => {
           <div className="results-container">
             <p>Results:</p>
             <ul id="search-results">
-              {searchResults.map((result, index) => (
-                <li key={index}>{result}</li>
-              ))}
+              {searchResults.length > 0 ? (
+                searchResults.map((result, index) => (
+                  <li key={index}>{result}</li>
+                ))
+              ) : (
+                <li>No results</li>
+              )}
             </ul>
           </div>
         </div>
