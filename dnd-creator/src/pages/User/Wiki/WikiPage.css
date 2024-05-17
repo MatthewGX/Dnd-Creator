@@ -21,6 +21,52 @@
     display:block;
 }
 
+#wiki .inner-containers {
+    display: grid;
+    grid-template-columns: 20% 80%;
+
+    background-color: white;
+    width: 100%;
+    height: 500px;
+
+    margin: 10px;
+    /* padding: 10px; */
+}
+
+#wiki .col>ul {
+    list-style: none;
+    background-color: rgb(87, 87, 87);
+
+    height: 100%;
+    border-right: 2px solid black;
+}
+
+#wiki .col>ul>li {
+    background-color: grey;
+    border-bottom: 1px solid black;
+
+    font-size: 20px;
+    font-weight: bold;
+    text-align: start;
+    padding: 10px 5px;
+}
+
+#info-screen {
+    background-color: grey;
+}
+
+#wiki .col ul .active {
+    background-color: darkgray;
+}
+
+#wiki .screen {
+    display:none;
+}
+
+#wiki .screen.active {
+    display:block;
+}
+
 #wiki .inner-screen {
     background-color: white;
     padding: 5px;
