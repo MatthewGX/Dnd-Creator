@@ -33,6 +33,10 @@ import ClassesWikiPage from './pages/User/Wiki/wiki-pages/ClassesWikiPage';
 
 import SheetsLayout from './pages/User/Sheets/SheetsLayout';
 import { SheetProvider } from './pages/User/Sheets/SheetContext/SheetContext';
+import ManagePlayersPage from './pages/User/Groups/GroupManagePage/manage-pages/ManagePlayersPage';
+import ManageSheetsPage from './pages/User/Groups/GroupManagePage/manage-pages/ManageSheetsPage';
+import ManageRolesPage from './pages/User/Groups/GroupManagePage/manage-pages/ManageRolesPage';
+import GroupManagePage2 from './pages/User/Groups/GroupManagePage/GroupManagePage';
 
 function App() {
   return (
@@ -46,7 +50,13 @@ function App() {
 
           {/* Guest Pages */}
           <Route path="creator" element={<SheetsMainPage />} />
-          <Route path="wiki" element={<WikiPage />} />
+          <Route path="wiki/" element={<WikiGlossary />}>
+            <Route path="classes" element={<ClassesWikiPage />} />
+            <Route path="races" element={<RacesWikiPage />} />
+            <Route path="attributes" element={<AttributesWikiPage />} />
+            <Route path="backgrounds" element={<BackgroundsWikiPage />} />
+            <Route path="alignments" element={<AlignmentsWikiPage />} />
+          </Route>
         </Route>
 
         {/* User Pathways (Logged In) */}
@@ -57,8 +67,12 @@ function App() {
           {/* Groups */}
           <Route path="groups/" element={<GroupProvider><GroupsLayout /></GroupProvider>}>
             <Route index element={<GroupsMainPage />} />
-            <Route path="group/:id/" element={<GroupManagePage />} />
-            <Route path="group/:id/add" element={<GroupAddPlayerPage />} />
+            <Route path="group/:id/" element={<GroupManagePage2 />}>
+              <Route path="players" element={<ManagePlayersPage />} />
+              <Route path="sheets" element={<ManageSheetsPage />} />
+              <Route path="roles" element={<ManageRolesPage />} />
+              <Route path="players/add" element={<GroupAddPlayerPage />} />
+            </Route>
             <Route path="add" element={<GroupAddPage />} />
           </Route>
           

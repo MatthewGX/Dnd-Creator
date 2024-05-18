@@ -12,30 +12,30 @@
     border-radius: 25px;
 }
 
-.input-box {
+#login .input-box {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
 }
 
-.input-box input {
+#login .input-box input {
     height: 35px;
     border: none;
     border-radius: 5px;
     padding-left: 10px;
 }
 
-.input-box label {
+#login .input-box label {
     margin-bottom: 5px;
 }
 
-.forgot-password {
+#login .forgot-password {
     display: block;
     text-align: center;
     margin-top: 10px;
 }
 
-.button-group button {
+#login .button-group button {
     width: 100px;
     margin: 10px;
     padding: 10px;
@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.button-group {
+#login .button-group {
     display: flex;
     justify-content: space-around;
 }

@@ -7,7 +7,7 @@ const SheetsMainPage = () => {
   const { sheets } = useSheets();
 
   return (
-    <>
+    <div id="sheets-main-page">
       <div className="outer-container">
         <ul className="inner-container">
           {sheets.map((sheet, index) => (
@@ -26,7 +26,7 @@ const SheetsMainPage = () => {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

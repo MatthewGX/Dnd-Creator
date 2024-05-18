@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './GroupManagePage.css';
 import GenericGroupContainer from '../../../../components/group-container/group-container';
+import Glossary from '../../../../components/glossary/Glossary';
+
+const GroupManagePage2 = () => {
+
+  const pages = { 'Players': 'players', 'Sheets': 'sheets', 'Roles': 'roles' };
+
+  return (
+    <div className="group-manage-page">
+      <div className="outer-container">
+        <Glossary glossary={pages} />
+      </div>
+    </div>
+  );
+}
+
 
 const GroupManagePage = () => {
   const [activeTab, setActiveTab] = useState('players');
@@ -56,4 +71,4 @@ const GroupManagePage = () => {
   );
 };
 
-export default GroupManagePage;
+export default GroupManagePage2;
