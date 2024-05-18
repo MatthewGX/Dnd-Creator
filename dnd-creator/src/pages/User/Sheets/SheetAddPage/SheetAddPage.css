@@ -177,6 +177,13 @@
 }
 
 
+.containerSide {
+  display: flex;
+}
+
+.half-width-textarea {
+  flex: 1;
+}
 
 
 .left-block,

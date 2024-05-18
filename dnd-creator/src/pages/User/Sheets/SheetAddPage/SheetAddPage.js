@@ -194,8 +194,14 @@ const SheetAddPage = () => {
               </div>
             </div>
             <div className="containerSide">
-              <div className="left-block">Bot Left Block</div>
-              <div className="right-block">BotRight Block</div>
+              <textarea
+                className="half-width-textarea"
+                placeholder="Left Text"
+              />
+              <textarea
+                className="half-width-textarea"
+                placeholder="Right Text"
+              />
             </div>
           </div>
         </div>
