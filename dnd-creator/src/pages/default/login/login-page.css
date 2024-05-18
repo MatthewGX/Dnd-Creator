@@ -1,50 +1,65 @@
 #login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    max-width: fit-content;
-    margin-inline: auto;
-
-    margin-top: 10%;
-    margin-bottom: auto;
-    align-items: center;
-    border-radius: 25px;
-}
-
-#login .input-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
-#login .input-box input {
-    height: 35px;
-    border: none;
-    border-radius: 5px;
-    padding-left: 10px;
-}
-
-#login .input-box label {
-    margin-bottom: 5px;
-}
-
-#login .forgot-password {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
-
-#login .button-group button {
-    width: 100px;
-    margin: 10px;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .input-box {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-box input {
+    width: 100%;
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background: #fff;
+    padding: 0 5px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+  }
+  
+  .input-box input:focus + label,
+  .input-box input:valid + label {
+    top: -10px;
+    left: 10px;
+    color: #333;
+    font-size: 12px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button-group button {
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
     cursor: pointer;
-}
-
-#login .button-group {
-    display: flex;
-    justify-content: space-around;
-}
+    font-size: 16px;
+  }
+  
+  .button-group button:hover {
+    background-color: #45a049;
+  }
+  
+  .message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  

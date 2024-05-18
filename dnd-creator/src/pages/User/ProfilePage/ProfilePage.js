@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
@@ -8,9 +7,16 @@ const ProfilePage = () => {
   const [profileCreated, setProfileCreated] = useState('');
 
   useEffect(() => {
-    setUsername('JohnDoe142');
-    setPassword('********');
-    setProfileCreated('4/14/2024');
+    // Get the logged-in user's username from localStorage
+    const storedUsername = localStorage.getItem('loggedInUser');
+    if (storedUsername) {
+      const user = JSON.parse(localStorage.getItem(storedUsername));
+      if (user) {
+        setUsername(user.username);
+        setPassword('********'); // Mask the password
+        setProfileCreated(user.profileCreated);
+      }
+    }
   }, []);
 
   return (

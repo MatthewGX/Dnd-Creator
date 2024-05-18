@@ -1,53 +1,75 @@
-// login-page.js
-
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './login-page.css'
+import './login-page.css';
 
 function LoginPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
+
+  const validateForm = () => {
+    const storedUser = JSON.parse(localStorage.getItem(username));
+
+    if (!storedUser || storedUser.password !== password) {
+      setMessage('Invalid username or password');
+      return false;
+    }
+
+    // Store the logged-in username in localStorage
+    localStorage.setItem('loggedInUser', username);
+    navigate("/user");
+    console.log(username, password);
+    return true;
+  };
+
+  const handleRegister = () => {
+    if (username === "" || password === "") {
+      setMessage("Username and password cannot be empty.");
+      return;
+    }
+
+    const profileCreated = new Date().toLocaleDateString();
+    localStorage.setItem(username, JSON.stringify({ username, password, profileCreated }));
+    setMessage("Registration successful! You can now log in.");
+  };
 
   return (
     <div>
-      <body>
-        <div id="login">
-          <form method="post" onsubmit="return validateForm()">
-            <div class="input-box">
-              {/* <!-- Should be "required" -->
-                <!-- <input type="text" id="username" name="username" required> --> */}
-              <input type="text" id="username" name="username" />
-              <label for="username">Username</label>
-            </div>
-            <div class="input-box">
-              {/* <!-- Should be "required" -->
-                <!-- <input type="password" id="password" name="password" required> --> */}
-              <input type="password" id="password" name="password" />
-              <label for="password">Password</label>
-            </div>
-            {/* <a href="../forgot-password-page/forgot-password-page.html" class="forgot-password">Forgot Password?</a> */}
-            <Link to="reset">Forgot Password?</Link>
-            <div class="button-group">
-              <button type="button" onClick={validateForm} >Login</button>
-              <button type="button" onclick="window.location.href='../register-page/register-page.html';">Register</button>
-            </div>
-          </form>
-        </div>
-      </body>
+      <div id="login">
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="input-box">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <label htmlFor="username">Username</label>
+          </div>
+          <div className="input-box">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label htmlFor="password">Password</label>
+          </div>
+          <Link to="reset">Forgot Password?</Link>
+          {message && <p className="message">{message}</p>}
+          <div className="button-group">
+            <button type="button" onClick={validateForm}>Login</button>
+            <button type="button" onClick={handleRegister}>Register</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
-
-  function validateForm() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    // Disabled for demo purpose
-
-    // if (username == "" || password == "") {
-    //     alert("Username and password cannot be empty.");
-    //     return false;
-    // }
-    navigate("../user")
-    console.log(username, password);
-    return true;
-  }
 }
 
 export { LoginPage };
