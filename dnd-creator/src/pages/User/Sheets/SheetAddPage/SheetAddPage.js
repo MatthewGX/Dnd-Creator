@@ -176,7 +176,18 @@ const SheetAddPage = () => {
                 <div className="textbox-container">
                   <span>Race</span>
                   <div className="textbox">
-                    <input className="userInput" type="text" />
+                    <select className="userInput">
+                      <option value="Human">Human</option>
+                      <option value="Elf">Elf</option>
+                      <option value="Dwarf">Dwarf</option>
+                      <option value="Halfling">Halfling</option>
+                      <option value="Half-Elf">Half-Elf</option>
+                      <option value="Half-Orc">Half-Orc</option>
+                      <option value="Gnome">Gnome</option>
+                      <option value="Tiefling">Tiefling</option>
+                      <option value="Dragonborn">Dragonborn</option>
+                      <option value="Goliath">Goliath</option>
+                    </select>
                   </div>
                 </div>
                 <div className="textbox-container">
