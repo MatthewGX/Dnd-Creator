@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
+import profileIcon from './profileIcon.png';
 
 const ProfilePage = () => {
   const [username, setUsername] = useState('');
@@ -23,7 +24,7 @@ const ProfilePage = () => {
     <div className="profile-page">
       <main>
         <section id="profile">
-          <img src="/path/to/profile.png" alt="Profile Picture" />
+          <img src={profileIcon} alt="Profile Picture" />
           <div>
             <p>Username: <span id="username">{username}</span></p>
             <p>Password: <span id="password">{password}</span></p>
