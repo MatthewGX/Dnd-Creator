@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './GroupManagePage.css';
+import './manage-pages/ManageStyles.css'
 import GenericGroupContainer from '../../../../components/group-container/group-container';
 import Glossary from '../../../../components/glossary/Glossary';
 
 const GroupManagePage2 = () => {
 
-  const pages = { 'Players': 'players', 'Sheets': 'sheets', 'Roles': 'roles' };
+  const pages = { 'Players': 'players', 'Sheets': 'sheets'};
 
   return (
     <div className="group-manage-page">

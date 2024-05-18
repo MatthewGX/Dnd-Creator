@@ -11,13 +11,15 @@ const GenericGroupContainer = (props) => {
 
   return (
     <>
-      <ul className="inner-container">
-        {group.map((group, index) => (
+      <ul className="inner-container" id="generic-container">
+        {group && group.map((group, index) => (
           <span key={index} id="group-container">
             <li id={index} className="group-object">
-              <Link to={`${linkUrl}/${index + 1}`}>
-                <h1>{group.groupName}</h1>
-              </Link>
+              {linkUrl != undefined ?
+                <Link to={`${linkUrl}/${index + 1}`}>
+                  <h1>{group}</h1>
+                </Link> :
+                <h1>{group}</h1>}
             </li>
           </span>
         ))}

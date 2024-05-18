@@ -7,7 +7,7 @@ const AttributesWikiPage = () => {
 
   return (
     <div className="inner-screen">
-      <h1>Available Attributes</h1>
+      <h1 className="pageTitle">Available Attributes</h1>
       <ol>
         {attributes.map((item, index) => (
           <span key={index}>

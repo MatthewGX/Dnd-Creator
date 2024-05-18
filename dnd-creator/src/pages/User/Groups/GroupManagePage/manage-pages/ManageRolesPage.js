@@ -4,7 +4,7 @@ const ManageRolesPage = () => {
     return (
       <div id="ManagePage">
         <div className="inner-screen">
-          <h1>Roles</h1>
+          <h1 className="pageTitle">Roles</h1>
         </div>
       </div>
     );

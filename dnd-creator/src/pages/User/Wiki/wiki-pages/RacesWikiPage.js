@@ -7,7 +7,7 @@ const RacesWikiPage = () => {
 
   return (
     <div className="inner-screen">
-      <h1>Available Races</h1>
+      <h1 className="pageTitle">Available Races</h1>
       <ol>
         {races.map((item, index) => (
           <span key={index}>

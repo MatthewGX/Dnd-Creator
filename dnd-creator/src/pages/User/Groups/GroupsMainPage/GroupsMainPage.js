@@ -9,7 +9,7 @@ const GroupsMainPage = () => {
 
   return (
     <>
-      <div className="outer-container">
+      <div className="outer-container" id="group-main-page">
         {/* <ul className="inner-container">
           {groups.map((group, index) => (
             <span key={index} id="group-container">
@@ -27,7 +27,7 @@ const GroupsMainPage = () => {
           </li>
         </ul> */}
 
-        <GenericGroupContainer group={groups} linkUrl='group' addLink='add' />
+        <GenericGroupContainer group={groups.map((group) => {return group.groupName})} linkUrl='group' addLink='add' />
       </div>
     </>
   );

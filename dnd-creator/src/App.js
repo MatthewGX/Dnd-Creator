@@ -72,6 +72,7 @@ function App() {
               <Route path="sheets" element={<ManageSheetsPage />} />
               <Route path="roles" element={<ManageRolesPage />} />
               <Route path="players/add" element={<GroupAddPlayerPage />} />
+              <Route path="sheets/creator" element={<SheetAddPage />} />
             </Route>
             <Route path="add" element={<GroupAddPage />} />
           </Route>

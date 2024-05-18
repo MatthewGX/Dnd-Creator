@@ -7,7 +7,7 @@ const ClassesWikiPage = () => {
 
   return (
     <div className="inner-screen">
-      <h1>Available Classes</h1>
+      <h1 className="pageTitle">Available Classes</h1>
       <ol>
         {classes.map((item, index) => (
           <span key={index}>

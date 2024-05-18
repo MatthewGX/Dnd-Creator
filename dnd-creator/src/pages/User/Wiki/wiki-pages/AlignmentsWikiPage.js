@@ -7,7 +7,7 @@ const AlignmentsWikiPage = () => {
 
   return (
     <div className="inner-screen">
-      <h1>Available Alignments</h1>
+      <h1 className="pageTitle">Available Alignments</h1>
       <ol>
         {alignments.map((item, index) => (
           <span key={index}>
