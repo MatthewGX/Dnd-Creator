@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSheets } from '../SheetContext/SheetContext';
 import './SheetsMainPage.css';
+import GenericGroupContainer from '../../../../components/group-container/group-container';
 
 const SheetsMainPage = () => {
   const { sheets } = useSheets();
@@ -9,7 +10,9 @@ const SheetsMainPage = () => {
   return (
     <div id="sheets-main-page">
       <div className="outer-container">
-        <ul className="inner-container">
+        <GenericGroupContainer group={sheets.map((sheet) => {return sheet.sheetName;})} linkUrl='sheet' addLink='add'/>
+
+        {/* <ul className="inner-container">
           {sheets.map((sheet, index) => (
             <span key={index} id="sheet-container">
               <li id={index} className="sheet-object">
@@ -24,7 +27,7 @@ const SheetsMainPage = () => {
               <button id="add-sheet-button"><h1>Add New Sheet</h1></button>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
