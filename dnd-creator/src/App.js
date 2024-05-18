@@ -21,7 +21,6 @@ import SheetAddPage from './pages/User/Sheets/SheetAddPage/SheetAddPage';
 import WikiPage from './pages/User/Wiki/WikiPage';
 import ResetPasswordPage from './pages/default/login/ResetPasswordPage/ResetPasswordPage';
 
-
 import GroupsLayout from './pages/User/Groups/GroupsLayout';
 import { GroupProvider } from './pages/User/Groups/GroupContext/GroupContext';
 import WikiGlossary from './pages/User/Wiki/WikiPage';
@@ -49,7 +48,7 @@ function App() {
           <Route path="login/reset" element={<ResetPasswordPage />} />
 
           {/* Guest Pages */}
-          <Route path="creator" element={<SheetsMainPage />} />
+          <Route path="creator" element={<SheetProvider><SheetsMainPage /></SheetProvider>} />
           <Route path="wiki/" element={<WikiGlossary />}>
             <Route path="classes" element={<ClassesWikiPage />} />
             <Route path="races" element={<RacesWikiPage />} />
@@ -77,11 +76,11 @@ function App() {
             <Route path="add" element={<GroupAddPage />} />
           </Route>
           
-          {/* Groups */}
+          {/* Sheets */}
           <Route path="sheets/" element={<SheetProvider><SheetsLayout /></SheetProvider>}>
             <Route index element={<SheetsMainPage />} />
-            <Route path="group/:id/" element={<SheetManagePage />} />
-            <Route path="group/:id/add" element={<SheetAddPlayerPage />} />
+            <Route path="sheet/:id/" element={<SheetManagePage />} />
+            <Route path="sheet/:id/add" element={<SheetAddPlayerPage />} />
             <Route path="add" element={<SheetAddPage />} />
           </Route>
 
