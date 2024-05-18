@@ -49,6 +49,7 @@ function App() {
 
           {/* Guest Pages */}
           <Route path="creator" element={<SheetProvider><SheetsMainPage /></SheetProvider>} />
+          <Route path="creator/add" element={<SheetAddPage />} />
           <Route path="wiki/" element={<WikiGlossary />}>
             <Route path="classes" element={<ClassesWikiPage />} />
             <Route path="races" element={<RacesWikiPage />} />
