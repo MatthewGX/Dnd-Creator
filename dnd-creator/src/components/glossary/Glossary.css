@@ -1,7 +1,10 @@
 #glossary .glossary-entry {
+    display: flex;
+    width: 100%;
     font-size: 20px;
     /* font-weight: bold; */
     text-align: start;
+
 }
 
 #glossary .glossary-entry a {
