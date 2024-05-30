@@ -1,4 +1,4 @@
-const app = require('./hello');
+const app = require('./app');
 const PORT = process.env.PORT || 3000;
 // Start the server and listen on the defined port
 app.listen(PORT, () => {
