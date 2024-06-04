@@ -51,11 +51,11 @@ function App() {
           <Route path="creator" element={<SheetProvider><SheetsMainPage /></SheetProvider>} />
           <Route path="creator/add" element={<SheetAddPage />} />
           <Route path="wiki/" element={<WikiGlossary />}>
-            <Route path="classes" element={<ClassesWikiPage />} />
-            <Route path="races" element={<RacesWikiPage />} />
-            <Route path="attributes" element={<AttributesWikiPage />} />
-            <Route path="backgrounds" element={<BackgroundsWikiPage />} />
-            <Route path="alignments" element={<AlignmentsWikiPage />} />
+            <Route path="classes" element={<ClassesWikiPage isOffline="true"/>} />
+            <Route path="races" element={<RacesWikiPage isOffline="true"/>} />
+            <Route path="attributes" element={<AttributesWikiPage isOffline="true"/>} />
+            <Route path="backgrounds" element={<BackgroundsWikiPage isOffline="true"/>} />
+            <Route path="alignments" element={<AlignmentsWikiPage isOffline="true"/>} />
           </Route>
         </Route>
 
@@ -88,11 +88,11 @@ function App() {
 
           {/* Wiki */}
           <Route path="wiki/" element={<WikiGlossary />}>
-            <Route path="classes" element={<ClassesWikiPage />} />
-            <Route path="races" element={<RacesWikiPage />} />
-            <Route path="attributes" element={<AttributesWikiPage />} />
-            <Route path="backgrounds" element={<BackgroundsWikiPage />} />
-            <Route path="alignments" element={<AlignmentsWikiPage />} />
+            <Route path="classes" element={<ClassesWikiPage isOffline="false"/>} />
+            <Route path="races" element={<RacesWikiPage isOffline="false"/>} />
+            <Route path="attributes" element={<AttributesWikiPage isOffline="false"/>} />
+            <Route path="backgrounds" element={<BackgroundsWikiPage isOffline="false"/>} />
+            <Route path="alignments" element={<AlignmentsWikiPage isOffline="false"/>} />
           </Route>
         </Route>
       </Routes>
