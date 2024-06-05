@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const client = require('./db.config');
+
+client.db('Users').createCollection('User');
 
 var test = [
     {id: 1, name: ['John', 'Doe'], groupIDs: []},
@@ -30,6 +33,41 @@ router.post('/register', (req, res) => {
 
     test.push(newUser);
     res.json(newUser);
+});
+
+router.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = {
+        name: nameParser(username),
+        password: hashedPassword,
+        groupIDs: [],
+        profileCreated: new Date()
+      };
+      const collection = client.db('Users').collection('User');
+      await collection.insertOne(newUser);
+      res.status(201).json(newUser);
+    } catch (err) {
+      console.error('Error registering user:', err); 
+      res.status(400).send('Error registering user');
+    }
+  });
+  
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const collection = client.db('Users').collection('User');
+        const user = await collection.findOne({ name: nameParser(username) });
+        if (user && await bcrypt.compare(password, user.password)) {
+        res.status(200).json(user);
+        } else {
+        res.status(401).send('Invalid username or password');
+        }
+    } catch (err) {
+        console.error('Error logging in:', err); 
+        res.status(400).send('Error logging in');
+    }
 });
 
 router.get('/:id', (req, res) => {

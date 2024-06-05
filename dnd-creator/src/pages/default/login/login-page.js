@@ -8,30 +8,54 @@ function LoginPage() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const validateForm = () => {
-    const storedUser = JSON.parse(localStorage.getItem(username));
+  const validateForm = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/login', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (!storedUser || storedUser.password !== password) {
-      setMessage('Invalid username or password');
-      return false;
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('loggedInUser', JSON.stringify(data));
+        setMessage('Login successful');
+        navigate("/user");
+      } else {
+        setMessage('Invalid username or password');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An error occurred. Please try again.');
     }
-
-    // Store the logged-in username in localStorage
-    localStorage.setItem('loggedInUser', username);
-    navigate("/user");
-    console.log(username, password);
-    return true;
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (username === "" || password === "") {
       setMessage("Username and password cannot be empty.");
       return;
     }
 
-    const profileCreated = new Date().toLocaleDateString();
-    localStorage.setItem(username, JSON.stringify({ username, password, profileCreated }));
-    setMessage("Registration successful! You can now log in.");
+    try {
+      const response = await fetch('http://localhost:4000/login', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        setMessage('Registration successful! You can now log in.');
+      } else {
+        setMessage('Error registering user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An error occurred. Please try again.');
+    }
   };
 
   return (
