@@ -7,7 +7,7 @@ const defaultAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawfu
 const AlignmentsWikiPage = (props) => {
   // let alignments = defaultAlignments;
   const [alignments, setAlignments] = useState([]);
-  const [currDesc, setCurrDesc] = useState("");
+  const [currAlignment, setCurrAlignment] = useState(undefined);
 
   useEffect(() => {
     fetch('https://www.dnd5eapi.co/api/alignments').then((resp) => {
@@ -20,10 +20,10 @@ const AlignmentsWikiPage = (props) => {
     });
   }, []);
 
-  const setDesc = (item) => {
+  const setAlignment = (item) => {
     fetch("https://www.dnd5eapi.co/api/alignments/" + item.index).then(resp => resp.json().then(json => {
       console.log(json);
-      setCurrDesc(json.desc);
+      setCurrAlignment(json);
     }));
   }
 
@@ -33,11 +33,19 @@ const AlignmentsWikiPage = (props) => {
       <ol>
         {alignments.map((item, index) => (
           <span key={index}>
-            <li onClick={() => setDesc(item)}>{item.name}</li>
+            <li onClick={() => setAlignment(item)}>{item.name}</li>
           </span>
         ))}
       </ol>
-      <h3>{currDesc}</h3>
+
+      <br></br>
+
+      {currAlignment ? (
+        <div id="alignment-info-screen" className="info-pane">
+          <h2>{currAlignment.name}</h2>
+          <p>{currAlignment.desc}</p>
+        </div>
+      ) : ("")}
     </div>
   );
 }
