@@ -2,6 +2,7 @@ const express = require('express');
 const client = require('./db.config');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
 client.db('testing').createCollection('test1');
 
 const testRoutes = require('./routes/test-routes');
@@ -9,6 +10,11 @@ const userRoutes = require('./routes/user-routes');
 
 const app = express();
 const port = 4000;
+
+// Configure CORS
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 
 app.use(bodyParser.urlencoded({
     extended: true

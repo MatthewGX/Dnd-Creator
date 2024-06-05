@@ -10,7 +10,7 @@ function LoginPage() {
 
   const validateForm = async () => {
     try {
-      const response = await fetch('http://localhost:4000/login', { 
+      const response = await fetch('http://localhost:4000/user/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function LoginPage() {
       console.log(test);
       const response = await fetch('http://localhost:4000/user/register', { 
         method: 'POST',
-        mode: 'no-cors',
+        // mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
