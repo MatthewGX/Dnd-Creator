@@ -1,5 +1,6 @@
 const express = require('express');
 const client = require('./db.config');
+const bodyParser = require('body-parser');
 
 client.db('testing').createCollection('test1');
 
@@ -9,7 +10,12 @@ const userRoutes = require('./routes/user-routes');
 const app = express();
 const port = 4000;
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+
+// app.use(express.json());
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     console.log('test');

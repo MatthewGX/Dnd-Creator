@@ -15,7 +15,7 @@ function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ 'username': username, 'password': password }),
       });
 
       if (response.ok) {
@@ -39,12 +39,16 @@ function LoginPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/login', { 
+      console.log(username, password)
+      let test = JSON.stringify({ 'username': username, 'password': password });
+      console.log(test);
+      const response = await fetch('http://localhost:4000/user/register', { 
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: test,
       });
 
       if (response.ok) {
