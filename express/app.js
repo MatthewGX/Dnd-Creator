@@ -7,6 +7,7 @@ client.db('testing').createCollection('test1');
 
 const testRoutes = require('./routes/test-routes');
 const userRoutes = require('./routes/user-routes');
+const groupRoutes = require('./routes/group-routes');
 
 const app = express();
 const port = 4000;
@@ -47,6 +48,7 @@ app.post('/testpost', async (req, res) => {
 
 // app.use('/test', testRoutes);
 app.use('/user', userRoutes);
+app.use('/group', groupRoutes);
 
 module.exports = app;
 
