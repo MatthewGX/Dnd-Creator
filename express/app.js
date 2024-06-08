@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Connect to local mongoDB
 mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true,
@@ -17,12 +18,16 @@ console.log('Connected to MongoDB');
 // Create Express Application
 const testRoutes = require('./routes/test-routes');
 const userRoutes = require('./routes/user-routes');
-const groupRoutes = require('./routes/group-routes');
+// const groupRoutes = require('./routes/group-routes');
 
 const app = express();
 const port = 4000;
 
 app.use(express.json());
+
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
 
 app.get('/', (req, res) => {
     console.log('test');
@@ -50,7 +55,7 @@ app.post('/testpost', async (req, res) => {
 
 // app.use('/test', testRoutes);
 app.use('/user', userRoutes);
-app.use('/group', groupRoutes);
+// app.use('/group', groupRoutes);
 
 module.exports = app;
 
