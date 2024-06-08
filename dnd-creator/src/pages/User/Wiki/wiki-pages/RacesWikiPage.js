@@ -37,10 +37,14 @@ const RacesWikiPage = () => {
       {currRace ? (
         <div className="info-pane">
           <h2>{currRace.name}</h2>
+          
           <p><b>Age:</b> {currRace.age}</p>
+          
           <p><b>Size:</b> {currRace.size}</p>
           <p>{currRace.size_description}</p>
+          
           <p><b>Alignment:</b> {currRace.alignment}</p>
+          
           <p><b>Subraces:</b></p>
           <ul>
             {currRace.subraces.map(subrace => <li>{subrace.name}</li>)}
