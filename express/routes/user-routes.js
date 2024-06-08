@@ -2,54 +2,26 @@ const express = require('express');
 const router = express.Router();
 const userModel = require('../models/user')
 const mongoose = require('mongoose');
-// const client = require('../db.config');
 const bcrypt = require('bcryptjs-react');
 
 const User = userModel;
 
-// client.db('Users').createCollection('User');
-
-var test = [
-    { id: 1, name: ['John', 'Doe'], groupIDs: [] },
-    { id: 2, name: ['Jane', 'Doe'], groupIDs: [1, 2, 3] }
-];
-
-// users endpoint to get all users
-router.get('/users', (req, res) => {
-    const users = [
-        { id: 1, name: ['John', 'Doe'], groupIDs: [] },
-        { id: 2, name: ['Jane', 'Doe'], groupIDs: [1, 2, 3] }
-    ]
-
-    res.json(test);
-})
-
+// Used for name splitting
 const nameParser = (name) => {
     return name.split(" ");
 }
 
-// user post endpoint
-// router.post('/register', (req, res) => {
-//     const newUser = {
-//         id: ++test.length,
-//         name: nameParser(req.body.name),
-//         groupIDs: []
-//     };
-
-//     test.push(newUser);
-//     res.json(newUser);
-// });
-
 router.post('/register', async (req, res) => {
     // const { username, password } = req.body;
-    const username = req.body.name;
+    const username = req.body.username;
     const password = req.body.password;
     console.log(req.body);
     try {
-        //   const hashedPassword = await bcrypt.hash(password, 10);
+        //   const hashedPassword = bcrypt.hashSync(password, 10);
         const hashedPassword = password;
         const newUser = new User({
-            name: nameParser(username),
+            username: username,
+            // name: nameParser(username),
             password: hashedPassword,
             groupIDs: [],
             profileCreated: new Date()
@@ -64,16 +36,14 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    // const { username, password } = req.body;
-    const username = req.body.name;
+    const username = req.body.username;
     const password = req.body.password;
+
     console.log('Trying: login', username, password);
     try {
-        // const collection = client.db('Users').collection('User');
-        const user = await User.findOne({ name: nameParser(username) });
-        // console.log('Found: ' + user);
-        // console.log(password, user.get('password'));
-        // console.log(password == user.get('password'))
+        const user = await User.findOne({ username: username });
+
+        // if (user && bcrypt.compare(password, user.password)) {
         if (user && password == user.get('password')) {
             res.status(200).json(user);
         } else {
@@ -85,16 +55,20 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/:id', (req, res) => {
-    const userId = parseInt(req.params.id, 10);
+router.get('/', async (req, res) => {
+    const userId = req.body.id;
+    // const userId = parseInt(req.body.id, 10);
+    console.log('Getting User Info: id = ' + userId);
 
-    for (let user of test) {
-        if (user.id === userId) {
-            res.json(user);
-        }
+    const user = await User.findById(userId);
+
+    if (user) {
+        console.log('User Found: ' + user);
+        res.status(200).json(user);
     }
-
-    res.status(404).send("User not Found");
+    else {
+        res.status(404).send("User not Found");
+    }
 });
 
 module.exports = router;
