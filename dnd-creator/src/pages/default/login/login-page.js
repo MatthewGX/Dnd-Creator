@@ -18,9 +18,11 @@ function LoginPage() {
         },
         body: JSON.stringify({ 'name': username, 'password': password }),
       });
+      
+      const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
-        const data = await response.json();
         localStorage.setItem('loggedInUser', JSON.stringify(data));
         setMessage('Login successful');
         navigate("/user");
