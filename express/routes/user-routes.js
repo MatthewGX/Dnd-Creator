@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const client = require('../db.config');
+const userModel = require('../models/user')
+const mongoose = require('mongoose');
+// const client = require('../db.config');
 const bcrypt = require('bcryptjs-react');
 
-client.db('Users').createCollection('User');
+const User = userModel;
+
+// client.db('Users').createCollection('User');
 
 var test = [
     { id: 1, name: ['John', 'Doe'], groupIDs: [] },
@@ -38,20 +42,19 @@ const nameParser = (name) => {
 
 router.post('/register', async (req, res) => {
     // const { username, password } = req.body;
-    const username = 'test test';
-    const password = 'test';
+    const username = req.body.name;
+    const password = req.body.password;
     console.log(req.body);
     try {
         //   const hashedPassword = await bcrypt.hash(password, 10);
         const hashedPassword = password;
-        const newUser = {
+        const newUser = new User({
             name: nameParser(username),
             password: hashedPassword,
             groupIDs: [],
             profileCreated: new Date()
-        };
-        const collection = client.db('Users').collection('User');
-        await collection.insertOne(newUser);
+        });
+        newUser.save();
         res.status(201).json(newUser);
         console.log('Success!');
     } catch (err) {
@@ -61,11 +64,17 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    // const { username, password } = req.body;
+    const username = req.body.name;
+    const password = req.body.password;
+    console.log('Trying: login', username, password);
     try {
-        const collection = client.db('Users').collection('User');
-        const user = await collection.findOne({ name: nameParser(username) });
-        if (user && await bcrypt.compare(password, user.password)) {
+        // const collection = client.db('Users').collection('User');
+        const user = await User.findOne({ name: nameParser(username) });
+        // console.log('Found: ' + user);
+        // console.log(password, user.get('password'));
+        // console.log(password == user.get('password'))
+        if (user && password == user.get('password')) {
             res.status(200).json(user);
         } else {
             res.status(401).send('Invalid username or password');
