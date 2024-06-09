@@ -16,7 +16,7 @@ function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 'name': username, 'password': password }),
+        body: JSON.stringify({ 'username': username, 'password': password }),
       });
       
       const data = await response.json();
@@ -43,7 +43,7 @@ function LoginPage() {
 
     try {
       console.log(username, password)
-      let test = JSON.stringify({ 'name': username, 'password': password });
+      let test = JSON.stringify({ 'username': username, 'password': password });
       console.log(test);
       const response = await fetch('http://localhost:4000/user/register', { 
         method: 'POST',

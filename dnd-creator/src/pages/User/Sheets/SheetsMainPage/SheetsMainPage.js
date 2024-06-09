@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSheets } from '../SheetContext/SheetContext';
 import './SheetsMainPage.css';
 import GenericGroupContainer from '../../../../components/group-container/group-container';
+import { getUserSheets } from '../../../../services/sheets';
 
 const SheetsMainPage = () => {
-  const { sheets } = useSheets();
+  // const { sheets } = useSheets();
+
+  const [ sheets, setSheets ] = useState([]);
+
+  useEffect(() => {
+    getUserSheets().then(data => setSheets(data));
+  }, []);
+
 
   return (
     <div id="sheets-main-page">

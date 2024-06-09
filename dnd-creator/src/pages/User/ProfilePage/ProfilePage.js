@@ -15,7 +15,7 @@ const ProfilePage = () => {
       const user = JSON.parse(storedUser);
       console.log(user);
       if (user) {
-        setUsername(user.name);
+        setUsername(user.username);
         setPassword('********'); // Mask the password
         setProfileCreated(user.profileCreated);
       }

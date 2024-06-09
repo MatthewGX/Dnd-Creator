@@ -24,6 +24,7 @@ router.post('/register', async (req, res) => {
             // name: nameParser(username),
             password: hashedPassword,
             groupIDs: [],
+            characterIDs: [],
             profileCreated: new Date()
         });
         newUser.save();
@@ -55,8 +56,8 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
-    const userId = req.body.id;
+router.get('/:id', async (req, res) => {
+    const userId = req.params.id;
     // const userId = parseInt(req.body.id, 10);
     console.log('Getting User Info: id = ' + userId);
 
