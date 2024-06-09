@@ -12,7 +12,7 @@ const Glossary = (props) => {
     <div className="inner-container" id="glossary">
       <div className="col">
         <ul>
-          {console.log(Object.entries(pages))}
+          {/* {console.log(Object.entries(pages))} */}
           {Object.entries(pages).map(([pageLabel, pageRoute], index) => (
               <li key={index} id={index} className="glossary-entry">
                 <NavLink to={pageRoute}>

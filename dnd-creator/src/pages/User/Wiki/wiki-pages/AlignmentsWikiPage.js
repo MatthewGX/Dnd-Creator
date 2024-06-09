@@ -7,18 +7,22 @@ const defaultAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawfu
 const AlignmentsWikiPage = (props) => {
   // let alignments = defaultAlignments;
   const [alignments, setAlignments] = useState([]);
+  const [isOffline, setOffline] = useState(true);
   const [currAlignment, setCurrAlignment] = useState(undefined);
 
   useEffect(() => {
-    fetch('https://www.dnd5eapi.co/api/alignments').then((resp) => {
-      resp.json().then(data => {
-        console.log(data)
-        setAlignments(data.results);
-      });
-    }, () => {
-      setAlignments(defaultAlignments);
-    });
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    const response = await fetch('https://www.dnd5eapi.co/api/alignments');
+    if (response.ok) {
+      const result = await response.json();
+
+      setAlignments(result.results);
+      setOffline(false);
+    }
+  }
 
   const setAlignment = (item) => {
     fetch("https://www.dnd5eapi.co/api/alignments/" + item.index).then(resp => resp.json().then(json => {
@@ -31,11 +35,19 @@ const AlignmentsWikiPage = (props) => {
     <div className="inner-screen">
       <h1 className="pageTitle">Available Alignments</h1>
       <ol>
-        {alignments.map((item, index) => (
-          <span key={index}>
-            <li onClick={() => setAlignment(item)}>{item.name}</li>
-          </span>
-        ))}
+        {!isOffline ?
+          alignments.map((item, index) => (
+            <span key={index}>
+              <li onClick={() => setAlignment(item)}>{item.name}</li>
+            </span>
+          ))
+          :
+          defaultAlignments.map((item) => (
+            <span key={item}>
+              <li>{item}</li>
+            </span>
+          ))
+        }
       </ol>
 
       <br></br>

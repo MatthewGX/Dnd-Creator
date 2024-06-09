@@ -33,13 +33,13 @@ const ClassesWikiPage = () => {
       <h1 className="pageTitle">Available Classes</h1>
       <ol>
         {classes.map((item, index) => (
-            <li onClick={() => setClass(item)}>{item.name}</li>
+          <li onClick={() => setClass(item)} key={index}>{item.name}</li>
         ))}
       </ol>
       {/* <h3>{currClass}</h3> */}
       <br></br>
       {currClass ? (
-        <div id="class-info-screen" class='info-pane'>
+        <div id="class-info-screen" className='info-pane'>
           <h2>{currClass.name}</h2>
           <p><b>Hit Die:</b> {currClass.hit_die}</p>
           <p><b>Proficiencies:</b> </p>
@@ -47,19 +47,19 @@ const ClassesWikiPage = () => {
             {console.log(currClass.proficiencies)}
             {currClass.proficiencies.map((prof, index) => (
               // <h1>test</h1>
-              <li>{prof.name}</li>
+              <li key={index}>{prof.name}</li>
             ))}
             {console.log(currClass.proficiencies)}
           </ul>
           <p><b>Starting Equipment:</b> </p>
           <ul id="startingEquipList">
             {currClass.starting_equipment.map((item, index) => (
-              <li>{item.equipment.name} x {item.quantity}</li>
+              <li key={index}>{item.equipment.name} x {item.quantity}</li>
             ))}
           </ul>
           <p><b>Sub-Classes:</b></p>
           <ul>
-            {currClass.subclasses.map((subclass) => (<li>{subclass.name}</li>))}
+            {currClass.subclasses.map((subclass, index) => (<li key={index}>{subclass.name}</li>))}
           </ul>
         </div>
       ) : ""}
