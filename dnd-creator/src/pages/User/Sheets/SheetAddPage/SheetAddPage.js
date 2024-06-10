@@ -200,7 +200,7 @@ const SheetAddPage = () => {
           <div className="col2">
             <div className="containerTop">
               <div className="infoSection">
-                <div className="infoLeft">Top Left Block</div>
+                <div className="infoLeft">Character Sheet</div>
                 <div className="infoRight">
                   <div className="textbox-container">
                     <span>Class</span>
@@ -252,8 +252,8 @@ const SheetAddPage = () => {
                 </div>
               </div>
               <div className="containerSide">
-                <textarea className="half-width-textarea" placeholder="Left Text" />
-                <textarea className="half-width-textarea" placeholder="Right Text" />
+                <textarea className="half-width-textarea" placeholder="ATTACKS & SPELLCASTING" />
+                <textarea className="half-width-textarea" placeholder="FEATURES & TRAITS" />
               </div>
             </div>
           </div>
