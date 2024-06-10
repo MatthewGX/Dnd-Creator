@@ -52,7 +52,7 @@ function LoginPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: username,
+          username: username,
           password: password
         }),
       });
