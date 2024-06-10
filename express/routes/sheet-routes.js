@@ -41,6 +41,49 @@ router.post('/create', async (req, res) => {
     }
 });
 
+router.patch('/update', async (req, res) => {
+    const {
+        name, class: characterClass, background, race,
+        alignment, experiencePoints, strength, dexterity,
+        constitution, intelligence, wisdom, charisma, owner, attacks, features, sheetId
+    } = req.body;
+
+    console.log(req.body);
+
+    const sheet = await CharacterSheet.findByIdAndUpdate(sheetId, {
+        name: name,
+        class: characterClass,
+        background: background,
+        race: race,
+        alignment: alignment,
+        experiencePoints: experiencePoints,
+        strength: strength,
+        dexterity: dexterity,
+        constitution: constitution,
+        intelligence: intelligence,
+        wisdom: wisdom,
+        charisma: charisma,
+        owner: owner,
+        attacks: attacks,
+        features: features,
+    })
+
+    if (sheet) {
+        res.status(201).json(sheet);
+    }
+    else {
+        res.status(400).send('No character sheet found');
+    }
+
+    // try {
+    //     await newCharacterSheet.save();
+    //     res.status(201).json(newCharacterSheet);
+    // } catch (err) {
+    //     console.error('Error creating character sheet:', err);
+    //     res.status(400).send('Error creating character sheet');
+    // }
+});
+
 // Get all character sheets for a user
 router.get('/user/:userId', async (req, res) => {
     try {

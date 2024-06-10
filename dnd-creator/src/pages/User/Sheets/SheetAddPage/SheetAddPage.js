@@ -17,7 +17,7 @@ const SheetAddPage = () => {
 
   const loadCharacter = async () => {
     const response = await getSheetInfo(id);
-    
+
     setCharacterInfo({
       class: response.class,
       alignment: response.alignment,
@@ -102,24 +102,44 @@ const SheetAddPage = () => {
       wisdom: wisValue,
       charisma: chaValue,
       owner: JSON.parse(localStorage.getItem('loggedInUser'))._id
-      // owner: JSON.parse(localStorage.getItem('loggedInUser'))._id
     };
 
-    const response = await fetch('http://localhost:4000/sheet/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newSheet),
-    });
+    if (id == undefined) {
+      const response = await fetch('http://localhost:4000/sheet/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newSheet),
+      });
 
-    if (response.ok) {
-      const createdSheet = await response.json();
-      addSheet(createdSheet);
-      navigate('/user/sheets');
-    } else {
-      console.error('Error creating character sheet');
+      if (response.ok) {
+        const createdSheet = await response.json();
+        addSheet(createdSheet);
+        navigate('/user/sheets');
+      } else {
+        console.error('Error creating character sheet');
+      }
     }
+    else {
+      console.log('patching')
+      newSheet.sheetId = id
+      // console.log(JSON.stringify(newSheet))
+      const response = await fetch('http://localhost:4000/sheet/update', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newSheet),
+      });
+
+      if (response.ok) {
+        navigate('/user/sheets');
+      } else {
+        console.error('Error creating character sheet');
+      }
+    }
+
   };
 
   return (
