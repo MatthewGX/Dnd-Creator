@@ -112,6 +112,31 @@ router.patch('/remove-group', async (req, res) => {
     }
 });
 
+router.patch('/add-sheet', async (req, res) => {
+    const userId = req.body.id;
+    const sheetId = req.body.sheetId;
+
+    const user = await User.findById(userId);
+
+    if (user) {
+        console.log('User Found: ' + user);
+
+        // Adds groupId to user ig groupId not in user.groupIDs
+        if (!user.characterIDs.some((item) => item == sheetId)) {
+            user.characterIDs.push(sheetId);
+            user.save();
+            console.log(user);
+            res.status(200).json(user);
+        }
+        else {
+            res.status(404).send("User already has sheet");
+        }
+    }
+    else {
+        res.status(404).send("User not Found");
+    }
+});
+
 router.get('/userList', async (req, res) => {
     const userList = await User.find({});
 

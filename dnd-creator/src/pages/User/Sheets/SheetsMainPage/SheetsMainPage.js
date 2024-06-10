@@ -1,43 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSheets } from '../SheetContext/SheetContext';
-import './SheetsMainPage.css';
+// import { useGroups } from '../GroupContext/GroupContext';
+// import './GroupsMainPage.css';
 import GenericGroupContainer from '../../../../components/generic-container/group-container';
-import { getUserSheets } from '../../../../services/UserMethods';
+import { getUserGroups, getUserSheets } from '../../../../services/UserMethods';
+import GroupContainer from '../../../../components/group-container/group-container';
+import SheetContainer from '../../../../components/group-container/sheet-container';
 
 const SheetsMainPage = () => {
-  // const { sheets } = useSheets();
-
-  const [ sheets, setSheets ] = useState([]);
+  // const { groups } = useGroups();
+  
+  const [sheet, setSheets] = useState([]);
 
   useEffect(() => {
-    getUserSheets().then(data => setSheets(data));
+    console.log('LOADING Sheets');
+    fetchData().then(() => {
+      console.log('Sheets:');
+      console.log(sheet);
+    });
   }, []);
 
+  const fetchData = async () => {
+    const test = await getUserSheets();
+    console.log(test);
+    setSheets(test);
+  }
 
   return (
-    <div id="sheets-main-page">
-      <div className="outer-container">
-        <GenericGroupContainer group={sheets.map((sheet) => {return sheet.sheetName;})} linkUrl='sheet' addLink='add'/>
-
+    <>
+      <div className="outer-container" id="group-main-page">
         {/* <ul className="inner-container">
-          {sheets.map((sheet, index) => (
-            <span key={index} id="sheet-container">
-              <li id={index} className="sheet-object">
-                <Link to={`sheet/${index + 1}`}>
-                  <h1>{sheet.sheetName}</h1>
+          {groups.map((group, index) => (
+            <span key={index} id="group-container">
+              <li id={index} className="group-object">
+                <Link to={`group/${index + 1}`}>
+                  <h1>{group.groupName}</h1>
                 </Link>
               </li>
             </span>
           ))}
-          <li id="add-sheet" className="sheet-object">
+          <li id="add-group" className="group-object">
             <Link to="add">
-              <button id="add-sheet-button"><h1>Add New Sheet</h1></button>
+              <button id="add-group-button"><h1>Add New Group</h1></button>
             </Link>
           </li>
         </ul> */}
+
+        {/* <GenericGroupContainer group={group.map((group) => {return group.groupName})} linkUrl='group' addLink='add' /> */}
+        <SheetContainer sheets={sheet} />
       </div>
-    </div>
+    </>
   );
 }
 

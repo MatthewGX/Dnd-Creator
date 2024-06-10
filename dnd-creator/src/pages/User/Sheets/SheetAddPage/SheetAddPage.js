@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSheets } from '../SheetContext/SheetContext';
 import './SheetAddPage.css';
 
 const SheetAddPage = () => {
+  const id = useParams().id;
+  console.log(id);
+
   const [strValue, setStrValue] = useState(10);
   const [dexValue, setDexValue] = useState(10);
   const [conValue, setConValue] = useState(10);

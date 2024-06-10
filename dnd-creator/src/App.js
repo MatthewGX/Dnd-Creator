@@ -80,7 +80,7 @@ function App() {
           {/* Sheets */}
           <Route path="sheets/" element={<SheetProvider><SheetsLayout /></SheetProvider>}>
             <Route index element={<SheetsMainPage />} />
-            <Route path="sheet/:id/" element={<SheetManagePage />} />
+            <Route path="sheet/:id/" element={<SheetAddPage />} />
             <Route path="sheet/:id/add" element={<SheetAddPlayerPage />} />
             <Route path="add" element={<SheetAddPage />} />
           </Route>

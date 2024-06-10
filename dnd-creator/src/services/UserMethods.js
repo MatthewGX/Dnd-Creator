@@ -1,6 +1,7 @@
 // sheets.js
 
 import { getGroupInfo } from "./GroupMethods";
+import { getSheetInfo } from "./SheetMethods";
 
 const baseURL = "http://localhost:4000/user/";
 const findURL = "http://localhost:4000/user/find/"
@@ -14,9 +15,16 @@ export const getUserInfo = async (userID) => {
 export const getUserSheets = async () => {
     const userID = JSON.parse(localStorage.getItem('loggedInUser'))._id;
 
-    return await fetch(findURL + userID)
-        .then(resp => resp.json())
-        .then(data => data.characterIDs);
+    const response = await fetch(findURL + userID)
+    const result = await response.json();
+    
+    let characterList = [];
+    for (let characterId of result.characterIDs) {
+        const test = await getSheetInfo(characterId);
+        characterList.push(test);
+    }
+
+    return characterList;
 }
 
 export const getUserGroups = async () => {
@@ -46,7 +54,7 @@ export const getUserList = async () => {
 }
 
 export const addGroupToPlayer = async (userId, groupId) => {
-    const response = await fetch('http://localhost:4000/user/add-group', {
+    const response = await fetch(baseURL + 'add-group', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -60,7 +68,7 @@ export const addGroupToPlayer = async (userId, groupId) => {
 }
 
 export const removeGroupFromPlayer = async (userId, groupId) => {
-    const response = await fetch('http://localhost:4000/user/remove-group', {
+    const response = await fetch(baseURL + 'remove-group', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -70,5 +78,20 @@ export const removeGroupFromPlayer = async (userId, groupId) => {
             groupId: groupId
         }),
     })
+    console.log(response);
+}
+
+export const addSheetToPlayer = async (userId, sheetId) => {
+    const response = await fetch(baseURL + 'add-sheet', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: userId,
+            sheetId: sheetId
+        }),
+    });
+
     console.log(response);
 }
