@@ -10,7 +10,7 @@ export const GroupProvider = ({ children }) => {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const response = await fetch('/api/groups');
+        const response = await fetch('http://localhost:4000/group');
         if (!response.ok) {
           throw new Error('Failed to fetch groups');
         }
@@ -27,7 +27,7 @@ export const GroupProvider = ({ children }) => {
 
   const addGroup = async (group) => {
     try {
-      const response = await fetch('/api/groups/create', {
+      const response = await fetch('http://localhost:4000/group/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

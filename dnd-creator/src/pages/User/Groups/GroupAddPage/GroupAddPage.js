@@ -12,8 +12,8 @@ const GroupAddPage = ({currentUser}) => { //change here
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newGroup = { groupName, members: players.split(',').map(player => player.trim()),
-     description, admin: currentUser._id};  // change here 
+    const newGroup = { groupName, members: [],
+     description};  // change here 
     try {
       await addGroup(newGroup);
       navigate('/user/groups');
@@ -36,7 +36,7 @@ const GroupAddPage = ({currentUser}) => { //change here
             onChange={(e) => setGroupName(e.target.value)}
           />
 
-          <label htmlFor="players">Players:</label>
+          {/* <label htmlFor="players">Players:</label>
           <input
             type="text"
             id="players"
@@ -44,7 +44,7 @@ const GroupAddPage = ({currentUser}) => { //change here
             placeholder="JohnDoe142, EpicUser11"
             value={players}
             onChange={(e) => setPlayers(e.target.value)}
-          />
+          /> */}
 
           <label htmlFor="description">Description:</label>
           <textarea

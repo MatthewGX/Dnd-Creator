@@ -6,22 +6,22 @@ const User = require('../models/user');
 
 
 router.post('/create', async (req, res) => {
-    const { groupName, adminId, description } = req.body;
-    if (!groupName || !adminId) {
+    const { groupName,       description } = req.body;
+    if (!groupName ) {
         return res.status(400).send('Group name and admin ID are required');
       }
     try {
       // Find the admin user
-      const admin = await User.findById(adminId);
-      if (!admin) {
-        return res.status(404).send('Admin user not found');
-      }
+      // const admin = await User.findById(adminId);
+      // if (!admin) {
+      //   return res.status(404).send('Admin user not found');
+      // }
   
       // Create new group
       const newGroup = new Group({
         groupName,
-        admin: admin._id,
-        members: [admin._id],
+        // admin: admin._id,
+        members: [],
         description
       });
   
