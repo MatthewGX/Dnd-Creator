@@ -26,6 +26,7 @@ export const GroupProvider = ({ children }) => {
 
 
   const addGroup = async (group) => {
+    console.log('Sending group data:', group);
     try {
       const response = await fetch('http://localhost:4000/group/create', {
         method: 'POST',
