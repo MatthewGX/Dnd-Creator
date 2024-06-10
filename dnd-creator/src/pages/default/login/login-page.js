@@ -10,30 +10,29 @@ function LoginPage() {
 
   const validateForm = async () => {
     try {
-      const response = await fetch('http://localhost:4000/user/login', { 
-        method: 'POST',
-        // mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 'username': username, 'password': password }),
-      });
-      
-      const data = await response.json();
-      console.log(data);
+        const response = await fetch('http://localhost:4000/user/login', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+        
+        const data = await response.json();
+        console.log(data);
 
-      if (response.ok) {
-        localStorage.setItem('loggedInUser', JSON.stringify(data));
-        setMessage('Login successful');
-        navigate("/user");
-      } else {
-        setMessage('Invalid username or password');
-      }
+        if (response.ok) {
+            localStorage.setItem('loggedInUser', JSON.stringify(data));
+            setMessage('Login successful');
+            navigate("/user");
+        } else {
+            setMessage('Invalid username or password');
+        }
     } catch (error) {
-      console.error('Error:', error);
-      setMessage('An error occurred. Please try again.');
+        console.error('Error:', error);
+        setMessage('An error occurred. Please try again.');
     }
-  };
+};
 
   const handleRegister = async () => {
     if (username === "" || password === "") {

@@ -12,22 +12,19 @@ const nameParser = (name) => {
 }
 
 router.post('/register', async (req, res) => {
-    // const { username, password } = req.body;
     const username = req.body.username;
     const password = req.body.password;
     console.log(req.body);
     try {
-        //   const hashedPassword = bcrypt.hashSync(password, 10);
         const hashedPassword = password;
         const newUser = new User({
             username: username,
-            // name: nameParser(username),
             password: hashedPassword,
             groupIDs: [],
             characterIDs: [],
             profileCreated: new Date()
         });
-        newUser.save();
+        await newUser.save();
         res.status(201).json(newUser);
         console.log('Success!');
     } catch (err) {
@@ -37,15 +34,13 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+    const { username, password } = req.body;
 
     console.log('Trying: login', username, password);
     try {
-        const user = await User.findOne({ username: username });
+        const user = await User.findOne({ username });
 
-        // if (user && bcrypt.compare(password, user.password)) {
-        if (user && password == user.get('password')) {
+        if (user && password === user.get('password')) {
             res.status(200).json(user);
         } else {
             res.status(401).send('Invalid username or password');
