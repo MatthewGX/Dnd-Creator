@@ -18,7 +18,7 @@
 
 
 #generic-container.inner-container {
-    /* display: flex; */
+    display: inline;
 
     background-color: white;
     width: 100%;
@@ -45,7 +45,7 @@
 
     border-radius: 0px 25px 0px 0px;
 }
-#generic-container .group-object a {
+#generic-container a {
     text-decoration: none;
     color: black;
 }
