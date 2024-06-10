@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGroups } from '../GroupContext/GroupContext';
 import './GroupsMainPage.css';
-import GenericGroupContainer from '../../../../components/group-container/group-container';
+import GenericGroupContainer from '../../../../components/generic-container/group-container';
+import { getUserGroups } from '../../../../services/UserMethods';
+import GroupContainer from '../../../../components/group-container/group-container';
 
 const GroupsMainPage = () => {
   const { groups } = useGroups();
+  
+  const [group, setGroups] = useState([]);
+
+  useEffect(() => {
+    console.log('LOADING GROUPS');
+    fetchData().then(() => {
+      console.log('Groups:');
+      console.log(group);
+    });
+  }, []);
+
+  const fetchData = async () => {
+    const test = await getUserGroups();
+    console.log(test);
+    setGroups(test);
+  }
 
   return (
     <>
@@ -27,7 +45,8 @@ const GroupsMainPage = () => {
           </li>
         </ul> */}
 
-        <GenericGroupContainer group={groups.map((group) => {return group.groupName})} linkUrl='group' addLink='add' />
+        {/* <GenericGroupContainer group={group.map((group) => {return group.groupName})} linkUrl='group' addLink='add' /> */}
+        <GroupContainer group={group} linkUrl='group' addLink='add' />
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './GroupManagePage.css';
 import './manage-pages/ManageStyles.css'
-import GenericGroupContainer from '../../../../components/group-container/group-container';
+import GenericGroupContainer from '../../../../components/generic-container/group-container';
 import Glossary from '../../../../components/glossary/Glossary';
 
 const GroupManagePage2 = () => {

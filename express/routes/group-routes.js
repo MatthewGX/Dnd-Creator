@@ -6,7 +6,13 @@ const User = require('../models/user');
 
 
 router.post('/create', async (req, res) => {
-    const { groupName,       description } = req.body;
+    // const { groupName, description } = req.body;
+  const groupName = req.body.groupName;
+  const description = req.body.description;
+  const admin = JSON.parse(req.body.admin);
+
+  console.log(admin);
+
     if (!groupName ) {
         return res.status(400).send('Group name and admin ID are required');
       }
@@ -19,11 +25,13 @@ router.post('/create', async (req, res) => {
   
       // Create new group
       const newGroup = new Group({
-        groupName,
-        // admin: admin._id,
-        members: [],
-        description
+        groupName: groupName,
+        members: [admin._id],
+        description: description,
+        admin: admin._id
       });
+      console.log('Printing Group:')
+      console.log(newGroup)
   
         await newGroup.save();
         res.status(201).json(newGroup);

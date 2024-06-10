@@ -1,7 +1,7 @@
 // ManagePlayersPage.js
 
 import { Link } from "react-router-dom";
-import GenericGroupContainer from "../../../../../components/group-container/group-container";
+import GenericGroupContainer from "../../../../../components/generic-container/group-container";
 
 const ManagePlayersPage = () => {
   return (

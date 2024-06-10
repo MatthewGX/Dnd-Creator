@@ -72,4 +72,24 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.patch('/add-group', async (req, res) => {
+    const userId = req.body.id;
+    const groupId = req.body.groupId;
+
+    const user = await User.findById(userId);
+    console.log([...user.groupIDs, groupId]);
+    // user.updateOne({groupIDs: [...user.groupIDs, groupId]})
+
+    if (user) {
+        console.log('User Found: ' + user);
+        user.groupIDs.push(groupId);
+        user.save();
+        console.log(user);
+        res.status(200).json(user);
+    }
+    else {
+        res.status(404).send("User not Found");
+    }
+})
+
 module.exports = router;

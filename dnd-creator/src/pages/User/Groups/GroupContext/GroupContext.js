@@ -15,7 +15,7 @@ export const GroupProvider = ({ children }) => {
           throw new Error('Failed to fetch groups');
         }
         const data = await response.json();
-        setGroups(data);
+        // setGroups(data);
       } catch (error) {
         console.error('Error fetching groups:', error);
       }
@@ -34,13 +34,29 @@ export const GroupProvider = ({ children }) => {
         },
         body: JSON.stringify(group),
       });
+      console.log(response);
 
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+        return await fetch('http://localhost:4000/user/add-group', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: JSON.parse(localStorage.getItem('loggedInUser'))._id,
+            groupId: data._id
+          }),
+        })
+      }
+      
       if (!response.ok) {
         throw new Error('Error creating group');
       }
-      
-      const newGroup = await response.json();
-      setGroups((prevGroups) => [...prevGroups, newGroup]);
+      // const newGroup = await response.json();
+      // setGroups((prevGroups) => [...prevGroups, newGroup]);
     } catch (error) {
       console.error('Error adding group:', error);
       alert('There was a problem creating the group.');

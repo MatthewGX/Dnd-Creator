@@ -1,23 +1,25 @@
-// group-container.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './group-container.css';
 
-import { Link } from "react-router-dom";
-
-const GroupContainer = (props) => {
+const GenericGroupContainer = (props) => {
   // Uses props.groups
 
-  const groups = props.group;
+  const group = props.group;
   const linkUrl = props.linkUrl;
   const addLink = props.addLink;
 
   return (
     <>
       <ul className="inner-container" id="generic-container">
-        {groups && groups.map((group, index) => (
+        {group && group.map((group, index) => (
           <span key={index} id="group-container">
             <li id={index} className="group-object">
-              <Link to={`${linkUrl}/${index + 1}`}>
-                <h1>{group.groupName}</h1>
-              </Link>
+              {linkUrl != undefined ?
+                <Link to={`${linkUrl}/${index + 1}`}>
+                  <h1>{group}</h1>
+                </Link> :
+                <h1>{group}</h1>}
             </li>
           </span>
         ))}
@@ -31,5 +33,4 @@ const GroupContainer = (props) => {
   );
 }
 
-
-export default GroupContainer;
+export default GenericGroupContainer;

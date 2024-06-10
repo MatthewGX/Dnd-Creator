@@ -12,11 +12,14 @@ const GroupAddPage = ({currentUser}) => { //change here
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newGroup = { groupName, members: [],
-     description};  // change here 
+    const newGroup = { groupName: groupName,
+     description: description, admin: localStorage.getItem('loggedInUser')};  // change here 
     try {
-      await addGroup(newGroup);
-      navigate('/user/groups');
+      const response = await addGroup(newGroup);
+
+      if (response.ok) {
+        navigate('/user/groups');
+      }
     } catch (error) {
       console.error('Failed to create group:', error);
     }

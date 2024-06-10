@@ -1,6 +1,6 @@
 // ManageSheetsPage.js
 
-import GenericGroupContainer from "../../../../../components/group-container/group-container";
+import GenericGroupContainer from "../../../../../components/generic-container/group-container";
 
 const ManageSheetsPage = () => {
   return (
