@@ -9,9 +9,11 @@ const ProfilePage = () => {
 
   useEffect(() => {
     // Get the logged-in user's username from localStorage
-    const storedUsername = localStorage.getItem('loggedInUser');
-    if (storedUsername) {
-      const user = JSON.parse(localStorage.getItem(storedUsername));
+    const storedUser = localStorage.getItem('loggedInUser');
+    // console.log(storedUser);
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      console.log(user);
       if (user) {
         setUsername(user.username);
         setPassword('********'); // Mask the password

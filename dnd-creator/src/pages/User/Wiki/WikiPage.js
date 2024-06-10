@@ -47,7 +47,7 @@ const pages = {'Classes': 'classes', 'Races': 'races', 'Attributes': 'attributes
 const WikiGlossary = () => {
   return (
     <div id="wiki">
-      <div class="outer-container">
+      <div className="outer-container">
         <Glossary glossary={pages} />
       </div>
     </div>

@@ -7,23 +7,27 @@ const defaultAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawfu
 const AlignmentsWikiPage = (props) => {
   // let alignments = defaultAlignments;
   const [alignments, setAlignments] = useState([]);
-  const [currDesc, setCurrDesc] = useState("");
+  const [isOffline, setOffline] = useState(true);
+  const [currAlignment, setCurrAlignment] = useState(undefined);
 
   useEffect(() => {
-    fetch('https://www.dnd5eapi.co/api/alignments').then((resp) => {
-      resp.json().then(data => {
-        console.log(data)
-        setAlignments(data.results);
-      });
-    }, () => {
-      setAlignments(defaultAlignments);
-    });
+    fetchData();
   }, []);
 
-  const setDesc = (item) => {
+  const fetchData = async () => {
+    const response = await fetch('https://www.dnd5eapi.co/api/alignments');
+    if (response.ok) {
+      const result = await response.json();
+
+      setAlignments(result.results);
+      setOffline(false);
+    }
+  }
+
+  const setAlignment = (item) => {
     fetch("https://www.dnd5eapi.co/api/alignments/" + item.index).then(resp => resp.json().then(json => {
       console.log(json);
-      setCurrDesc(json.desc);
+      setCurrAlignment(json);
     }));
   }
 
@@ -31,13 +35,29 @@ const AlignmentsWikiPage = (props) => {
     <div className="inner-screen">
       <h1 className="pageTitle">Available Alignments</h1>
       <ol>
-        {alignments.map((item, index) => (
-          <span key={index}>
-            <li onClick={() => setDesc(item)}>{item.name}</li>
-          </span>
-        ))}
+        {!isOffline ?
+          alignments.map((item, index) => (
+            <span key={index}>
+              <li onClick={() => setAlignment(item)}>{item.name}</li>
+            </span>
+          ))
+          :
+          defaultAlignments.map((item) => (
+            <span key={item}>
+              <li>{item}</li>
+            </span>
+          ))
+        }
       </ol>
-      <h3>{currDesc}</h3>
+
+      <br></br>
+
+      {currAlignment ? (
+        <div id="alignment-info-screen" className="info-pane">
+          <h2>{currAlignment.name}</h2>
+          <p>{currAlignment.desc}</p>
+        </div>
+      ) : ("")}
     </div>
   );
 }
