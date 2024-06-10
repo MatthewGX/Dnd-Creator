@@ -65,7 +65,7 @@ const SheetAddPage = () => {
       intelligence: intValue,
       wisdom: wisValue,
       charisma: chaValue,
-      owner: ""
+      owner: JSON.parse(localStorage.getItem('loggedInUser'))._id
       // owner: JSON.parse(localStorage.getItem('loggedInUser'))._id
     };
 

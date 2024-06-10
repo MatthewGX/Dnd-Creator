@@ -10,6 +10,8 @@ router.post('/create', async (req, res) => {
         constitution, intelligence, wisdom, charisma, owner
     } = req.body;
 
+    console.log(req.body);
+
     const newCharacterSheet = new CharacterSheet({
         name,
         class: characterClass,
