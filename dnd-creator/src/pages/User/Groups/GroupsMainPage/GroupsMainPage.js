@@ -46,7 +46,7 @@ const GroupsMainPage = () => {
         </ul> */}
 
         {/* <GenericGroupContainer group={group.map((group) => {return group.groupName})} linkUrl='group' addLink='add' /> */}
-        <GroupContainer group={group} linkUrl='group' addLink='add' />
+        <GroupContainer group={group} />
       </div>
     </>
   );

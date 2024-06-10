@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/find/:id', async (req, res) => {
     const userId = req.params.id;
     // const userId = parseInt(req.body.id, 10);
     console.log('Getting User Info: id = ' + userId);
@@ -77,14 +77,47 @@ router.patch('/add-group', async (req, res) => {
 
     if (user) {
         console.log('User Found: ' + user);
-        user.groupIDs.push(groupId);
-        user.save();
-        console.log(user);
-        res.status(200).json(user);
+
+        // Adds groupId to user ig groupId not in user.groupIDs
+        if (!user.groupIDs.some((item) => item == groupId)) {
+            user.groupIDs.push(groupId);
+            user.save();
+            console.log(user);
+            res.status(200).json(user);
+        }
+        else {
+            res.status(404).send("User already in Group");
+        }
     }
     else {
         res.status(404).send("User not Found");
     }
+});
+
+router.patch('/remove-group', async (req, res) => {
+    const userId = req.body.id;
+    const groupId = req.body.groupId;
+    
+    const user = await User.findById(userId);
+
+    if (user) {
+        console.log(user.groupIDs.filter(group => group != groupId));
+        user.groupIDs = user.groupIDs.filter(group => group != groupId);
+        user.save();
+
+        res.status(200).json(user);
+    }
+    else {
+        res.status(404).send('User not found');
+    }
+});
+
+router.get('/userList', async (req, res) => {
+    const userList = await User.find({});
+
+    console.log(userList);
+
+    res.status(200).json(userList);
 })
 
 module.exports = router;

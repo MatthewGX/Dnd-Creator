@@ -77,6 +77,10 @@ router.post('/create', async (req, res) => {
         return res.status(404).send('Group not found');
       }
   
+      if (group.members.some((member) => member == userId)) {
+        return res.status(404).send('User already in Group');
+      }
+
       const user = await User.findById(userId);
       if (!user) {
         return res.status(404).send('User not found');
@@ -91,6 +95,39 @@ router.post('/create', async (req, res) => {
       console.error('Error adding member:', err);
       res.status(400).send('Error adding member');
     }
+  });
+
+  router.patch('/promote', async (req, res) => {
+    const groupId = req.body.groupId;
+    const userId = req.body.userId;
+
+    const group = await Group.findByIdAndUpdate(groupId, {admin: userId});
+
+    if (group) {
+      res.status(200).json(group);
+      // group.save();
+    }
+    else {
+      res.status(404).send('Group not found');
+    }
+  });
+
+  router.patch('/removeUser', async (req, res) => {
+    const groupId = req.body.groupId;
+    const userId = req.body.userId;
+
+    const group = await Group.findById(groupId);
+
+    if (group) {
+      group.members = group.members.filter((member) => member != userId);
+      group.save();
+
+      res.status(200).json(group);
+    }
+    else {
+      res.status(404).send('Group not found');
+    }
+
   });
   
   module.exports = router;

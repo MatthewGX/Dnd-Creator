@@ -36,9 +36,10 @@
 #wiki .inner-screen {
     background-color: white;
     /* padding: 5px; */
+    position: relative;
     margin: 10px;
 
-    height: 400px;
+    height: calc(100% - 20px);
 
 }
 
