@@ -73,7 +73,7 @@
 }
 
 .circle span {
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .userInput {
@@ -125,7 +125,7 @@
   /*A little bit of padding*/
   margin-right: 5px;
   /*A little bit of padding*/
-
+  font-size:x-large;
   display: flex;
   justify-content: center;
   align-items: center;
