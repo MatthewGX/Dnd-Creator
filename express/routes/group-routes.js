@@ -6,6 +6,7 @@ const User = require('../models/user');
 
 
 router.post('/create', async (req, res) => {
+    console.log('Received data:', req.body);
     const { groupName,       description } = req.body;
     if (!groupName ) {
         return res.status(400).send('Group name and admin ID are required');
