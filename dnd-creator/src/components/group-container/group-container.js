@@ -14,15 +14,16 @@ const GroupContainer = (props) => {
       <ul className="inner-container" id="generic-container">
         {groups && groups.map((group, index) => (
           <span key={index} id="group-container">
+              <Link to={`group/${group._id}`}>
             <li id={index} className="group-object">
-              <Link to={`${linkUrl}/${index + 1}`}>
                 <h1>{group.groupName}</h1>
-              </Link>
+                <p>{group.description}</p>
             </li>
+            </Link>
           </span>
         ))}
         <li id="add-group" className="group-object">
-          <Link to={addLink}>
+          <Link to='add'>
             <h1>New</h1>
           </Link>
         </li>
