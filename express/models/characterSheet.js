@@ -15,6 +15,8 @@ const characterSheetSchema = new Schema({
     wisdom: { type: Number, required: true, default: 10 },
     charisma: { type: Number, required: true, default: 10 },
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    attacks: { type: String, required: true },
+    features: { type: String, required: true },
 });
 
 module.exports = mongoose.model('CharacterSheet', characterSheetSchema);

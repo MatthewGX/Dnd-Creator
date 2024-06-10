@@ -1,11 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSheets } from '../SheetContext/SheetContext';
 import './SheetAddPage.css';
+import { getSheetInfo } from '../../../../services/SheetMethods';
 
 const SheetAddPage = () => {
   const id = useParams().id;
   console.log(id);
+
+  useEffect(() => {
+    if (id) {
+      console.log('LOADING CHARACTER');
+      loadCharacter();
+    }
+  }, []);
+
+  const loadCharacter = async () => {
+    const response = await getSheetInfo(id);
+    
+    setCharacterInfo({
+      class: response.class,
+      alignment: response.alignment,
+      background: response.background,
+      exp: response.experiencePoints,
+      race: response.race,
+      name: response.name,
+      attacks: response.attacks,
+      features: response.features
+    })
+
+    setStrValue(response.strength);
+    setDexValue(response.dexterity);
+    setConValue(response.constitution);
+    setIntValue(response.intelligence);
+    setWisValue(response.wisdom);
+    setChaValue(response.charisma);
+  }
 
   const [strValue, setStrValue] = useState(10);
   const [dexValue, setDexValue] = useState(10);
@@ -20,6 +50,8 @@ const SheetAddPage = () => {
     race: '',
     alignment: '',
     name: '',
+    attacks: '',
+    features: ''
   });
 
   const { addSheet } = useSheets();
@@ -53,6 +85,7 @@ const SheetAddPage = () => {
         document.getElementById('cha-mod').innerText = Math.floor((value - 10) / 2);
         break;
       default:
+        console.log('changing ' + id);
         setCharacterInfo({ ...characterInfo, [id]: value });
         break;
     }
@@ -252,8 +285,8 @@ const SheetAddPage = () => {
                 </div>
               </div>
               <div className="containerSide">
-                <textarea className="half-width-textarea" placeholder="ATTACKS & SPELLCASTING" />
-                <textarea className="half-width-textarea" placeholder="FEATURES & TRAITS" />
+                <textarea id="attacks" className="half-width-textarea" placeholder="ATTACKS & SPELLCASTING" value={characterInfo.attacks} onChange={handleInputChange} />
+                <textarea id="features" className="half-width-textarea" placeholder="FEATURES & TRAITS" value={characterInfo.features} onChange={handleInputChange} />
               </div>
             </div>
           </div>
