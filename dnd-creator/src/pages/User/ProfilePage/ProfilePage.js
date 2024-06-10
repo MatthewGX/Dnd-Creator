@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
 import profileIcon from './profileIcon.png';
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
 
 const ProfilePage = () => {
     const [userID, setUserID] = useState('');
@@ -9,6 +10,8 @@ const ProfilePage = () => {
     const [profileCreated, setProfileCreated] = useState('');
     const [location, setLocation] = useState({});
     const [weather, setWeather] = useState({});
+    const [likes, setLikes] = useState(0);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         // Get the logged-in user's information from localStorage
@@ -54,6 +57,14 @@ const ProfilePage = () => {
         }
     }, [location]);
 
+    const handleLike = () => {
+        setLikes(likes + 1);
+    };
+
+    const handleAddComment = (comment) => {
+        setComments([...comments, comment]);
+    };
+
     return (
         <div className="profile-page">
             <main>
@@ -70,11 +81,58 @@ const ProfilePage = () => {
                         {weather.current && (
                             <p>Weather: <span id="weather">{weather.current.condition.text}, {weather.current.temp_c}°C</span></p>
                         )}
+                        <div className="social-buttons">
+                            <FacebookShareButton url={window.location.href} quote="Check out this profile!">
+                                <FacebookIcon size={32} round />
+                            </FacebookShareButton>
+                            <TwitterShareButton url={window.location.href} title="Check out this profile!">
+                                <TwitterIcon size={32} round />
+                            </TwitterShareButton>
+                            <LinkedinShareButton url={window.location.href}>
+                                <LinkedinIcon size={32} round />
+                            </LinkedinShareButton>
+                        </div>
+                        <div className="interaction">
+                            <button onClick={handleLike}>Like ({likes})</button>
+                            <div>
+                                <h4>Comments:</h4>
+                                <ul>
+                                    {comments.map((comment, index) => (
+                                        <li key={index}>{comment}</li>
+                                    ))}
+                                </ul>
+                                <CommentForm onAddComment={handleAddComment} />
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>
         </div>
     );
-}
+};
+
+const CommentForm = ({ onAddComment }) => {
+    const [comment, setComment] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (comment.trim()) {
+            onAddComment(comment);
+            setComment('');
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Add a comment..."
+            />
+            <button type="submit">Add Comment</button>
+        </form>
+    );
+};
 
 export default ProfilePage;
