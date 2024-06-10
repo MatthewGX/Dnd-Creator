@@ -6,14 +6,27 @@ const ResetPasswordPage = () => {
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleResetPassword = () => {
-    const user = JSON.parse(localStorage.getItem(username));
-    if (user) {
-      user.password = newPassword;
-      localStorage.setItem(username, JSON.stringify(user));
-      setMessage('Password reset successful!');
-    } else {
-      setMessage('Username not found!');
+  const handleResetPassword = async () => {
+    console.log('Sending data:', { username, newPassword });
+    try {
+      const response = await fetch('http://localhost:4000/user/reset-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, newPassword }),
+      });
+
+      if (response.ok) {
+        setMessage('Password reset successful!');
+      } else {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        setMessage('Username not found or error resetting password!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An error occurred. Please try again.');
     }
   };
 
