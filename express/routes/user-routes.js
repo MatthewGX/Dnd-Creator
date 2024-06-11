@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userModel = require('../models/user')
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs-react');
+const bcrypt = require('bcrypt');
 
 const User = userModel;
 
@@ -50,6 +50,34 @@ router.post('/login', async (req, res) => {
         res.status(400).send('Error logging in');
     }
 });
+
+// Reset pwd
+router.post('/reset-password', async (req, res) => {
+    const { username, newPassword } = req.body;
+  
+    // Log the request body to see what data is being received
+    console.log('Received data:', req.body);
+  
+    if (!username || !newPassword) {
+      return res.status(400).send('Missing required fields');
+    }
+  
+    try {
+      const user = await User.findOne({ username });
+      if (!user) {
+        return res.status(404).send('Username not found');
+      }
+  
+      const hashedPassword = bcrypt.hashSync(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+  
+      res.status(200).send('Password reset successful');
+    } catch (err) {
+      console.error('Error resetting password:', err);
+      res.status(400).send('Error resetting password');
+    }
+  });
 
 router.get('/find/:id', async (req, res) => {
     const userId = req.params.id;
