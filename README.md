@@ -82,7 +82,7 @@ Character Sheet: Stores character stats and details such as class, background, r
 
 API Endpoints
 
-User Routes
+User Routes:
 
 POST /user/register: Registers a new user.
 
@@ -90,7 +90,7 @@ POST /user/login: Logs in a user.
 
 POST /user/reset-password: Resets a user's password.
 
-Group Routes
+Group Routes:
 
 POST /group/create: Creates a new group.
 
@@ -100,11 +100,8 @@ GET /group/:id: Retrieves a group by ID.
 
 POST /group/:id/addMember: Adds a member to a group.
 
-PATCH /group/promote: Promotes a member to admin.
 
-PATCH /group/removeUser: Removes a user from a group.
-
-Character Sheet Routes
+Character Sheet Routes:
 
 POST /sheet/create: Creates a new character sheet.
 
@@ -112,17 +109,5 @@ GET /sheet: Retrieves all character sheets.
 
 GET /sheet/:id: Retrieves a character sheet by ID.
 
-Deployment
-To deploy the application, you can use services like Heroku for the server and Vercel or Netlify for the client. Make sure to configure environment variables and database connections accordingly.
-
 Challenges and Solutions
 During development, we faced challenges with secure password handling and data validation. Future improvements include adding in-app messaging, calendar integration for scheduling game sessions, and more detailed character customization options.
-
-Future Improvements
-In-App Messaging: Allow users to communicate within the app.
-Calendar Integration: Schedule and manage game sessions.
-Enhanced Character Customization: Provide more options for character creation and management.
-
-Acknowledgments
-Thanks to the DND community for their inspiration and support.
-Special thanks to the development team for their hard work and dedication.
