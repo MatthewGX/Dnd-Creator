@@ -21,6 +21,7 @@ const SheetsMainPage = () => {
 
   const fetchData = async () => {
     const test = await getUserSheets();
+    console.log(test);
     setSheets(test);
   }
 
