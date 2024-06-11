@@ -66,30 +66,52 @@ Back-End (express)
 The back-end is built with Express.js and organized into the following routes:
 
 user-routes.js: Handles user registration, login, and password reset.
+
 group-routes.js: Manages group creation, retrieval, and member management.
+
 sheet-routes.js: Handles character sheet creation, retrieval, and updates.
+
 Database
 MongoDB is used to store user information, group details, and character sheets. The database schema includes:
 
 User: Stores username, password, group IDs, character sheet IDs, and profile creation date.
+
 Group: Stores group name, description, admin ID, and member IDs.
+
 Character Sheet: Stores character stats and details such as class, background, race, and alignment.
+
 API Endpoints
+
 User Routes
+
 POST /user/register: Registers a new user.
+
 POST /user/login: Logs in a user.
+
 POST /user/reset-password: Resets a user's password.
+
 Group Routes
+
 POST /group/create: Creates a new group.
+
 GET /group: Retrieves all groups.
+
 GET /group/:id: Retrieves a group by ID.
+
 POST /group/:id/addMember: Adds a member to a group.
+
 PATCH /group/promote: Promotes a member to admin.
+
 PATCH /group/removeUser: Removes a user from a group.
+
 Character Sheet Routes
+
 POST /sheet/create: Creates a new character sheet.
+
 GET /sheet: Retrieves all character sheets.
+
 GET /sheet/:id: Retrieves a character sheet by ID.
+
 Deployment
 To deploy the application, you can use services like Heroku for the server and Vercel or Netlify for the client. Make sure to configure environment variables and database connections accordingly.
 
