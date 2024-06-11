@@ -10,45 +10,50 @@ Profile Management: Users can view their profile information and reset their pas
 Group Management: Create, join, and manage DND groups.
 Character Sheet Management: Create and manage character sheets with auto-calculated stats.
 Real-Time Weather: Displays current weather information on the profile page.
+
 Tech Stack
 Front-End: React
 Back-End: Express.js, Node.js
 Database: MongoDB
 APIs: WeatherAPI for weather information
 Other Tools: Various npm libraries
+
 Getting Started
 Prerequisites
-Node.js and npm installed on your machine
-MongoDB installed and running locally
+1. Node.js and npm installed on your machine
+2. MongoDB installed and running locally
+
 Installation
-Clone the repository:
+1. Clone the repository
+2a. 'cd dnd-creator'
+3a. 'npm install'
 
-```
-cd dnd-creator
-```
-Install the dependencies for both the dnd-creator and serexpresser:
+2b. 'cd express'
+3a. 'npm install'
 
-Install MongoDB as server
-https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/
 
-Start MongoDB
-Make sure MongoDB is running. You can start it with:
+4. Install the dependencies for both the dnd-creator and the express server:
 
-```
-cd express
-node server.js
-```
-The server will run on http://localhost:4000.
+    Install MongoDB as server
+    https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/
 
-Start the Client
-Navigate to the client directory and start the client:
+``
 
-```
-cd ..
-cd dnd-creator
-npm start
-```
-The client will run on http://localhost:3000.
+Starting the Express Backend
+1. 'cd express' from project root
+2. 'node server.js'
+
+* Note: The server will run on http://localhost:4000.
+
+``
+
+Starting the React Frontend
+1. 'cd dnd-creator' from project root
+2. 'npm start'
+
+* Note: The client will run on http://localhost:3000 and can be accessed through the browser.
+
+``
 
 Application Structure
 Front-End (dnd-creator)
