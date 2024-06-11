@@ -49,8 +49,8 @@ function App() {
           <Route path="login/reset" element={<ResetPasswordPage />} />
 
           {/* Guest Pages */}
-          <Route path="creator" element={<SheetProvider><SheetsMainPage /></SheetProvider>} />
-          <Route path="creator/add" element={<SheetAddPage />} />
+          {/* <Route path="creator" element={<SheetProvider><SheetsMainPage /></SheetProvider>} /> */}
+          <Route path="creator" element={<SheetAddPage isOffline="true"/>} />
           <Route path="wiki/" element={<WikiGlossary />}>
             <Route path="classes" element={<ClassesWikiPage isOffline="true"/>} />
             <Route path="races" element={<RacesWikiPage isOffline="true"/>} />

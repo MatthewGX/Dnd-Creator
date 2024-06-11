@@ -3,8 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSheets } from '../SheetContext/SheetContext';
 import './SheetAddPage.css';
 import { getSheetInfo } from '../../../../services/SheetMethods';
+import { addSheetToPlayer } from '../../../../services/UserMethods';
 
-const SheetAddPage = () => {
+const SheetAddPage = (props) => {
+  const isOffline = props.isOffline;
+  console.log(isOffline);
+
   const id = useParams().id;
   console.log(id);
 
@@ -54,7 +58,7 @@ const SheetAddPage = () => {
     features: ''
   });
 
-  const { addSheet } = useSheets();
+  // const { addSheet } = useSheets();
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -115,7 +119,8 @@ const SheetAddPage = () => {
 
       if (response.ok) {
         const createdSheet = await response.json();
-        addSheet(createdSheet);
+        
+        addSheetToPlayer(JSON.parse(localStorage.getItem('loggedInUser'))._id, createdSheet._id);
         navigate('/user/sheets');
       } else {
         console.error('Error creating character sheet');
@@ -311,7 +316,9 @@ const SheetAddPage = () => {
             </div>
           </div>
         </div>
+        {isOffline != 'true' ? 
         <button type="submit">Create Character Sheet</button>
+        : "" }
       </form>
     </div>
   );
