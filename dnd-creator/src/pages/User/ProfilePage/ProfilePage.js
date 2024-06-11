@@ -100,18 +100,6 @@ const ProfilePage = () => {
                                 <LinkedinIcon size={32} round />
                             </LinkedinShareButton>
                         </div>
-                        <div className="interaction">
-                            <button onClick={handleLike}>Like ({likes})</button>
-                            <div>
-                                <h4>Comments:</h4>
-                                <ul>
-                                    {comments.map((comment, index) => (
-                                        <li key={index}>{comment}</li>
-                                    ))}
-                                </ul>
-                                <CommentForm onAddComment={handleAddComment} />
-                            </div>
-                        </div>
                         <span>
                             <button onClick={() => logout()}>Logout</button>
                         </span>
