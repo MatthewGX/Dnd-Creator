@@ -1,5 +1,6 @@
 // GroupMethods.js
 
+import { getSheetInfo } from "./SheetMethods";
 import { addGroupToPlayer, removeGroupFromPlayer } from "./UserMethods";
 
 const baseURL = "http://localhost:4000/group/";
@@ -7,6 +8,19 @@ const baseURL = "http://localhost:4000/group/";
 export const getGroupInfo = async (groupId) => {
   return await fetch(baseURL + groupId)
     .then(resp => resp.json());
+}
+
+export const getGroupSheets = async (groupId) => {
+  const response = await fetch(baseURL + groupId);
+  const result = await response.json();
+  
+  let characterList = [];
+  for (let characterId of result.sheets) {
+      const test = await getSheetInfo(characterId);
+      characterList.push(test);
+  }
+
+  return characterList;
 }
 
 export const isAdmin = async (groupId, playerId) => {
@@ -74,4 +88,17 @@ export const promotePlayerInGroup = async (groupId, userId) => {
     console.log('PROMOTED');
     return response;
   }
+}
+
+export const addSheetToGroup = async (groupId, sheetId) => {
+  const response = await fetch(baseURL + `${groupId}/addSheet`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      sheetId: sheetId
+    }),
+  });
+  console.log(response);
 }

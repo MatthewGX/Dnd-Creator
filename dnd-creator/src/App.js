@@ -36,6 +36,7 @@ import ManagePlayersPage from './pages/User/Groups/GroupManagePage/manage-pages/
 import ManageSheetsPage from './pages/User/Groups/GroupManagePage/manage-pages/ManageSheetsPage';
 import ManageRolesPage from './pages/User/Groups/GroupManagePage/manage-pages/ManageRolesPage';
 import GroupManagePage2 from './pages/User/Groups/GroupManagePage/GroupManagePage';
+import GroupAddSheetPage from './pages/User/Groups/GroupManagePage/GroupAddSheetPage/GroupAddSheetPage';
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
             <Route path="group/:id/" element={<GroupManagePage2 />}>
               <Route path="players" element={<ManagePlayersPage />} />
               <Route path="sheets" element={<ManageSheetsPage />} />
+              <Route path="sheets/add" element={<GroupAddSheetPage />} />
               <Route path="roles" element={<ManageRolesPage />} />
               <Route path="players/add" element={<GroupAddPlayerPage />} />
               <Route path="sheets/creator" element={<SheetAddPage />} />

@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Group = require('../models/group');
 const User = require('../models/user');
+const CharacterSheet = require('../models/characterSheet');
 
 
 router.post('/create', async (req, res) => {
@@ -128,6 +129,36 @@ router.post('/create', async (req, res) => {
       res.status(404).send('Group not found');
     }
 
+  });
+  
+  // Route to add a member to a group
+  router.post('/:id/addSheet', async (req, res) => {
+    const { sheetId } = req.body;
+  
+    try {
+      const group = await Group.findById(req.params.id);
+      if (!group) {
+        return res.status(404).send('Group not found');
+      }
+  
+      if (group.sheets.some((member) => member == sheetId)) {
+        return res.status(404).send('Sheet already in Group');
+      }
+
+      const sheet = await CharacterSheet.findById(sheetId);
+      if (!sheet) {
+        return res.status(404).send('Sheet not found');
+      }
+  
+      if (!group.sheets.includes(sheet._id)) {
+        group.sheets.push(sheet._id);
+        await group.save();
+      }
+      res.status(200).json(group);
+    } catch (err) {
+      console.error('Error adding sheet:', err);
+      res.status(400).send('Error adding sheet');
+    }
   });
   
   module.exports = router;
