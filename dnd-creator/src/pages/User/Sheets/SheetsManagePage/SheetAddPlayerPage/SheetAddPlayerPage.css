@@ -1,0 +1,56 @@
+.sheet-add-player-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sheet-add-player-page main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+.sheet-add-player-page .search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.sheet-add-player-page label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sheet-add-player-page input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.sheet-add-player-page .results-container {
+  width: 100%;
+}
+
+.sheet-add-player-page .results-container p {
+  font-weight: bold;
+}
+
+.sheet-add-player-page #search-results {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sheet-add-player-page #search-results li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}

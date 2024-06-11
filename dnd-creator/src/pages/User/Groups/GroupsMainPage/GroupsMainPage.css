@@ -1,0 +1,16 @@
+#group-main-page.outer-container {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    margin-inline: auto;
+    margin-top: 25px;
+    margin-bottom: auto;
+
+    background-color: black;
+    width: 75%;
+    max-width: 1000px;
+    height: fit-content;
+
+}
+

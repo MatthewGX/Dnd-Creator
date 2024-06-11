@@ -1,0 +1,71 @@
+#generic-container #add-group a {
+    display:flex;
+    width: 75%;
+    height: 75%;
+    background-color: rgb(55, 143, 55);
+    /* border: none; */
+    border-radius: 360px;
+    /* color: red; */
+    text-align: center;
+    border: 1px solid black;
+}
+
+#generic-container #add-group a h1 {
+    /* margin-top: 50%; */
+    margin: auto;
+    font-weight: bold;
+}
+
+
+#generic-container.inner-container {
+    display: inline;
+
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    max-height: 100%;
+
+    margin: 10px;
+    padding: 10px;
+
+}
+
+
+
+#generic-container .group-object {
+    display: inline-block;
+    vertical-align: middle;
+
+    background-color: gray;
+    width: 150px;
+    height: 150px;
+    
+    margin: 10px;
+    padding: 10px;
+
+    border-radius: 0px 25px 0px 0px;
+}
+#generic-container a {
+    text-decoration: none;
+    color: black;
+}
+
+#generic-container #add-group {
+    /* margin: 0; */
+    display: inline-flex;
+    padding: 0;
+    width: 170px;
+    height: 170px;
+    background-color: transparent;
+
+    align-items: center;
+    justify-content: center;
+}
+
+#generic-container #add-group button {
+    width: 75%;
+    height: 75%;
+    background-color: rgb(55, 143, 55);
+    /* border: none; */
+    border-radius: 360px;
+}

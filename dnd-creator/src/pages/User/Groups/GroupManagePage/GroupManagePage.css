@@ -1,0 +1,45 @@
+.group-manage-page .outer-container {
+    display: flex;
+    box-sizing: border-box;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    margin-inline: auto;
+    margin-top: 25px;
+    margin-bottom: auto;
+
+    background-color: black;
+    width: 95%;
+    /* max-width: 1000px; */
+    /* height: fit-content; */
+}
+
+.group-manage-page .inner-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    /* min-height: 500px; */
+
+    margin: 10px;
+    /* padding: 10px; */
+}
+
+.group-manage-page .outer-group {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    margin-inline: auto;
+    margin-top: 25px;
+    margin-bottom: auto;
+
+    background-color: black;
+    width: 95%;
+    max-width: 1000px;
+    height: fit-content;
+
+}
+

@@ -1,0 +1,213 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.column {
+  float: left;
+  margin-right: 4%;
+}
+
+.column:nth-child(3n) {
+  margin-right: 0;
+}
+
+.column p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.statCol {
+  width: 12%;
+  background-color: #a1a1a1;
+  display: flex;
+  flex-direction: column;
+}
+
+.col2 {
+  width: 88%;
+  background-color: #a5a4a4;
+}
+
+.stat {
+  width: 200px;
+  height: 100px;
+  background-color: #777777;
+  margin-top: 5px;
+  /*A little bit of padding*/
+  margin-bottom: 5px;
+  /*A little bit of padding*/
+  margin-left: 5px;
+  /*A little bit of padding*/
+  margin-right: 5px;
+  /*A little bit of padding*/
+  display: flex;
+  align-items: center;
+}
+
+.rectangle {
+  width: 100px;
+  height: 50px;
+  background-color: #ccc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 63px;
+  height: 40px;
+
+  background-color: #ccc;
+
+  margin-right: 10px;
+  /*Gives a little spacing to the right*/
+
+  border-radius: 100%;
+
+
+  justify-content: center;
+  align-items: center;
+}
+
+.circle span {
+  font-size: 15px;
+}
+
+.userInput {
+  width: 80%;
+  height: 80%;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
+
+.containerTop {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.containerSide {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.infoSection {
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  /*A little bit of padding*/
+  margin-bottom: 5px;
+  /*A little bit of padding*/
+  margin-left: 5px;
+  /*A little bit of padding*/
+  margin-right: 5px;
+  /*A little bit of padding*/
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoLeft,
+.infoRight {
+  margin-top: 5px;
+  /*A little bit of padding*/
+  margin-bottom: 5px;
+  /*A little bit of padding*/
+  margin-left: 5px;
+  /*A little bit of padding*/
+  margin-right: 5px;
+  /*A little bit of padding*/
+  font-size:x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.infoLeft {
+  background-color: transparent;
+  width: 30%;
+
+}
+
+.infoRight {
+  flex: 1;
+  background-color: #777777;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Create 3 columns with equal width */
+  gap: 10px;
+  /* Add gap between items */
+
+}
+
+.textbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textbox-container span {
+  margin-bottom: 5px;
+  /* Adjust spacing between number and textbox */
+}
+
+.textbox {
+  margin-top: 5px;
+  /*A little bit of padding*/
+  margin-bottom: 5px;
+  /*A little bit of padding*/
+  margin-left: 5px;
+  /*A little bit of padding*/
+  margin-right: 5px;
+  /*A little bit of padding*/
+  background-color: #ccc;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.containerSide {
+  display: flex;
+}
+
+.half-width-textarea {
+  flex: 1;
+}
+
+
+.left-block,
+.right-block {
+  margin-top: 5px;
+  /*A little bit of padding*/
+  margin-bottom: 5px;
+  /*A little bit of padding*/
+  margin-left: 5px;
+  /*A little bit of padding*/
+  margin-right: 5px;
+  /*A little bit of padding*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.left-block {
+  background-color: rgb(255, 255, 255);
+
+}
+
+.right-block {
+  background-color: rgb(255, 255, 255);
+}
