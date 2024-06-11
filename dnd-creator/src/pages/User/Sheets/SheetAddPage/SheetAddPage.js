@@ -282,6 +282,7 @@ const SheetAddPage = (props) => {
                     <span>Race</span>
                     <div className="textbox">
                       <select id="race" className="userInput" value={characterInfo.race} onChange={handleInputChange}>
+                        <option value="" disabled selected hidden>Please Select One</option>
                         <option value="Human">Human</option>
                         <option value="Elf">Elf</option>
                         <option value="Dwarf">Dwarf</option>
