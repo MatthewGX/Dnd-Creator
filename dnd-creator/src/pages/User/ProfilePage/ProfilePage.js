@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
 import profileIcon from './profileIcon.png';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
     const [userID, setUserID] = useState('');
@@ -12,6 +13,8 @@ const ProfilePage = () => {
     const [weather, setWeather] = useState({});
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Get the logged-in user's information from localStorage
@@ -65,6 +68,11 @@ const ProfilePage = () => {
         setComments([...comments, comment]);
     };
 
+    const logout = () => {
+        localStorage.removeItem('loggedInUser');
+        navigate("..");
+    };
+
     return (
         <div className="profile-page">
             <main>
@@ -104,6 +112,9 @@ const ProfilePage = () => {
                                 <CommentForm onAddComment={handleAddComment} />
                             </div>
                         </div>
+                        <span>
+                            <button onClick={() => logout()}>Logout</button>
+                        </span>
                     </div>
                 </section>
             </main>
