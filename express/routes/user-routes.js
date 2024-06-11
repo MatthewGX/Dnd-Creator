@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userModel = require('../models/user')
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs-react');
 
 const User = userModel;
 
@@ -54,9 +54,7 @@ router.post('/login', async (req, res) => {
 // Reset pwd
 router.post('/reset-password', async (req, res) => {
     const { username, newPassword } = req.body;
-  
-    // Log the request body to see what data is being received
-    console.log('Received data:', req.body);
+    console.log('Received new password:', newPassword);
   
     if (!username || !newPassword) {
       return res.status(400).send('Missing required fields');
@@ -68,8 +66,7 @@ router.post('/reset-password', async (req, res) => {
         return res.status(404).send('Username not found');
       }
   
-      const hashedPassword = bcrypt.hashSync(newPassword, 10);
-      user.password = hashedPassword;
+      user.password = newPassword; // Storing unhashed password
       await user.save();
   
       res.status(200).send('Password reset successful');
@@ -137,31 +134,6 @@ router.patch('/remove-group', async (req, res) => {
     }
     else {
         res.status(404).send('User not found');
-    }
-});
-
-router.patch('/add-sheet', async (req, res) => {
-    const userId = req.body.id;
-    const sheetId = req.body.sheetId;
-
-    const user = await User.findById(userId);
-
-    if (user) {
-        console.log('User Found: ' + user);
-
-        // Adds groupId to user ig groupId not in user.groupIDs
-        if (!user.characterIDs.some((item) => item == sheetId)) {
-            user.characterIDs.push(sheetId);
-            user.save();
-            console.log(user);
-            res.status(200).json(user);
-        }
-        else {
-            res.status(404).send("User already has sheet");
-        }
-    }
-    else {
-        res.status(404).send("User not Found");
     }
 });
 

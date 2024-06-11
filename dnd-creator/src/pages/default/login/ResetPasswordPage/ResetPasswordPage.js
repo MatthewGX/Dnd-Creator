@@ -14,7 +14,8 @@ const ResetPasswordPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, newPassword }),
+        body: JSON.stringify({ 
+          username: username, newPassword: newPassword }),
       });
 
       if (response.ok) {
